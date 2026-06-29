@@ -1,0 +1,50 @@
+Berikut adalah pandangan dan rancangan komprehensif untuk aplikasi 7KAIH:
+
+### 1. Arsitektur Database (Relational Database)
+Karena satu orang tua bisa memiliki lebih dari satu anak, dan satu anak memiliki dua orang tua (atau wali), kita **tidak boleh** menggunakan relasi *One-to-Many* sederhana. Kita butuh tabel *pivot* (Many-to-Many).
+
+Berikut adalah rancangan skema database (bisa langsung dijadikan *Laravel Migration*):
+
+*   **`users`** (Tabel autentikasi standar Laravel)
+    *   `id`, `username` (bisa NIK atau No. HP), `password`, `role` (default: 'orang_tua').
+*   **`orang_tua`** (Data detail orang tua)
+    *   `id`, `user_id`, `nik`, `nama_lengkap`, `no_hp`, `email`, `pekerjaan`, `alamat`.
+*   **`siswa`** (Data detail siswa)
+    *   `id`, `nisn` (Nomor Induk Siswa Nasional), `nik_siswa`, `nama_lengkap`, `tanggal_lahir`, `jenis_kelamin`, `nama_sekolah`, `kelas`.
+*   **`orang_tua_siswa`** (Tabel *Pivot* / Relasi)
+    *   `id`, `orang_tua_id`, `siswa_id`, `status_hubungan` (enum: 'Ayah', 'Ibu', 'Wali').
+    *   *Fungsi: Memungkinkan satu akun orang tua melihat dashboard untuk semua anaknya.*
+*   **`jurnal_7kaih`** (Tabel inti untuk pencatatan harian)
+    *   `id`, `siswa_id`, `tanggal`, `is_bangun_pagi` (boolean), `is_beribadah` (boolean), `is_berolahraga` (boolean), `is_makan_sehat` (boolean), `is_gemar_belajar` (boolean), `is_bermasyarakat` (boolean), `is_tidur_cepat` (boolean).
+    *   `foto_bukti` (string, nullable) -> *Sangat disarankan untuk validasi.*
+    *   `catatan_orang_tua` (text, nullable).
+    *   `created_by` (foreign key ke `orang_tua_id`).
+
+### 2. Fitur "Anti-Curang" & Verifikasi (Sesuai Minat Bapak)
+Bapak memiliki ketertarikan pada sistem pelacakan dan deteksi anomali. Dalam konteks aplikasi parenting/pendidikan, "kebocoran" atau "kecurangan" yang sering terjadi adalah **orang tua yang mencentang semua kotak (checklist) tanpa menyuruh anaknya melakukan kebiasaan tersebut.**
+
+Untuk mengatasinya, Bapak bisa menambahkan fitur:
+*   **Validasi Bukti Foto:** Untuk kebiasaan tertentu (misal: *Berolahraga* atau *Bermasyarakat*), sistem mewajibkan unggah 1 foto kegiatan.
+*   **Geotagging (Opsional):** Jika memungkinkan, catat koordinat GPS saat orang tua menginput jurnal. Jika dalam satu hari ada 3 input dari lokasi yang berjauhan dalam waktu berdekatan, sistem bisa menandai ini sebagai *anomali*.
+*   **Streak & Gamifikasi:** Berikan *badge* atau "Api Semangat" jika anak berhasil melakukan 7 kebiasaan selama 7 hari berturut-turut. Ini memotivasi orang tua untuk jujur dan rutin.
+
+### 3. Alur Pengguna (User Flow) Khusus Orang Tua
+Karena yang mengisi adalah orang tua (yang mungkin gaptek atau sangat sibuk), UI/UX harus **sangat sederhana**.
+1.  **Onboarding:** Orang tua daftar menggunakan No. HP (Verifikasi OTP via WhatsApp lebih disarankan agar tidak ada nomor palsu).
+2.  **Input Data Anak:** Orang tua memasukkan data anak. *Saran Pro:* Jika aplikasi ini diadopsi pemerintah, buat API untuk tarik data otomatis dari **Dapodik** menggunakan NISN, sehingga orang tua tidak perlu mengetik nama sekolah dan kelas secara manual.
+3.  **Dashboard Harian:** Tampilan utama adalah kartu (card) untuk setiap anak. Di dalamnya ada 7 *toggle switch* (on/off) yang besar dan mudah ditekan di layar HP.
+4.  **Laporan Bulanan:** Orang tua bisa melihat grafik (menggunakan *Chart.js* atau *ApexCharts*) perkembangan kebiasaan anak dalam sebulan terakhir.
+
+### 4. Tech Stack & UI/UX (Modern, Eye-Catching)
+Sesuai dengan preferensi Bapak terhadap tema **Merah, Hitam, dan Putih** serta framework yang ringan:
+*   **Backend:** **Laravel** (Sangat aman, *built-in security* bagus untuk data anak, dan ekosistemnya luas). Gunakan **Laravel Octane** jika butuh performa super cepat.
+*   **Frontend:** **Tailwind CSS**.
+    *   **Warna:** Gunakan Putih (`bg-white`) sebagai *background* utama agar bersih. Gunakan Hitam (`text-gray-900`) untuk teks agar mudah dibaca. Gunakan Merah (`bg-red-600` atau `bg-rose-600`) sebagai warna aksen untuk *button* utama, *toggle switch* yang aktif, dan *highlight* penting (merah juga identik dengan warna semangat dan ciri khas Kemendikdasmen).
+*   **Aplikasi Web Progresif (PWA):** Daripada membuat aplikasi Android (APK) yang berat dan harus di-download di Play Store, buatlah aplikasi ini sebagai **PWA**. 
+    *   *Keuntungan:* Orang tua cukup buka via browser (Chrome/Safari), lalu klik "Add to Home Screen". Ikon aplikasi akan muncul di HP seperti aplikasi native. Ini sangat *lightweight*, hemat server, dan **sangat bagus untuk SEO** jika Bapak membuat *landing page* publik untuk gerakan 7KAIH ini.
+
+### 5. Saran Tambahan untuk Proyek Pemerintah
+Karena ini berkaitan dengan inisiatif Kemendikdasmen:
+*   **Privasi Data Anak (UU PDP):** Data anak di bawah umur sangat dilindungi. Pastikan di *Terms & Conditions* disebutkan bahwa data hanya digunakan untuk pemantauan karakter dan tidak dijual ke pihak ketiga.
+*   **Fitur Export PDF/Excel:** Bapak menyukai fitur import/export. Orang tua pasti ingin memiliki rekam jejak digital. Sediakan tombol "Download Laporan Karakter Bulanan (PDF)" yang bisa mereka cetak atau kirim ke wali kelas sebagai bukti pendampingan di rumah.
+

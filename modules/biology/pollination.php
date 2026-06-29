@@ -170,8 +170,8 @@
     <div id="quizModal" class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center">
         <div class="bg-white p-6 rounded-2xl max-w-sm w-full mx-4 shadow-2xl">
             <div class="text-center mb-4">
-                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <i class="fas fa-question text-3xl text-blue-600"></i>
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-question text-3xl text-green-600"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800">Kuis Kilat!</h3>
                 <p class="text-gray-600 mt-2">Apa yang terjadi pada tumbuhan jika tidak ada lebah atau penyerbuk?</p>

@@ -78,9 +78,9 @@ try {
                 <!-- Description -->
                 <div style="margin-bottom: 28px;">
                     <h4 style="color: #1f2937; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-align-left" style="color: #6366f1;"></i> Deskripsi Inovasi
+                        <i class="fas fa-align-left" style="color: #22c55e;"></i> Deskripsi Inovasi
                     </h4>
-                    <div style="background: #f9fafb; border-radius: 10px; padding: 20px; border-left: 4px solid #6366f1;">
+                    <div style="background: #f9fafb; border-radius: 10px; padding: 20px; border-left: 4px solid #22c55e;">
                         <p style="color: #374151; line-height: 1.7; margin: 0; font-size: 1rem;"><?= nl2br(htmlspecialchars($innovationData['description'])) ?></p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ try {
                         </h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <?php foreach ($features as $feature): ?>
-                            <li style="display: flex; align-items: start; margin-bottom: 12px; padding: 12px; background: #eff6ff; border-radius: 8px; border-left: 3px solid #3b82f6;">
+                            <li style="display: flex; align-items: start; margin-bottom: 12px; padding: 12px; background: #f0fdf4; border-radius: 8px; border-left: 3px solid #3b82f6;">
                                 <i class="fas fa-star" style="color: #3b82f6; margin-right: 12px; margin-top: 2px; flex-shrink: 0;"></i>
                                 <span style="color: #374151; line-height: 1.5;"><?= htmlspecialchars($feature) ?></span>
                             </li>
@@ -128,15 +128,15 @@ try {
                 </div>
                 
                 <!-- Anti-Corruption Integration -->
-                <div style="background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border: 1px solid #0ea5e9; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                <div style="background: linear-gradient(135deg, #dcfce7, #f0fdf4); border: 1px solid #22c55e; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
                     <div style="display: flex; align-items: start; gap: 16px;">
-                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i class="fas fa-shield-alt" style="color: white; font-size: 1.1rem;"></i>
                         </div>
                         <div style="flex: 1;">
-                            <h5 style="margin: 0 0 8px 0; color: #0c4a6e; font-size: 1rem; font-weight: 600;">Pendidikan Berintegritas</h5>
-                            <p style="margin: 0; color: #0369a1; line-height: 1.6; font-size: 0.95rem;">
-                                Inovasi ini merupakan bagian integral dari komitmen SD Integra IV dalam menciptakan ekosistem pendidikan yang 
+                            <h5 style="margin: 0 0 8px 0; color: #14532d; font-size: 1rem; font-weight: 600;">Pendidikan Berintegritas</h5>
+                            <p style="margin: 0; color: #15803d; line-height: 1.6; font-size: 0.95rem;">
+                                Inovasi ini merupakan bagian integral dari komitmen SDIP Tunas Bangsa dalam menciptakan ekosistem pendidikan yang 
                                 transparan, akuntabel, dan berintegritas. Setiap implementasi inovasi didokumentasikan secara terbuka untuk 
                                 memastikan akuntabilitas dan mendukung pembentukan karakter siswa yang jujur dan bertanggung jawab.
                             </p>
@@ -145,9 +145,9 @@ try {
                 </div>
                 
                 <!-- Implementation Info -->
-                <div style="background: #f8fafc; border-radius: 10px; padding: 20px; border-top: 3px solid #6366f1;">
+                <div style="background: #f8fafc; border-radius: 10px; padding: 20px; border-top: 3px solid #22c55e;">
                     <h4 style="color: #1f2937; font-size: 1rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-info-circle" style="color: #6366f1;"></i> Informasi Implementasi
+                        <i class="fas fa-info-circle" style="color: #22c55e;"></i> Informasi Implementasi
                     </h4>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; font-size: 0.9rem;">
                         <div>

@@ -1,4 +1,8 @@
 <?php
+if ($_SERVER['REQUEST_URI'] === '/admin') {
+    header('Location: /admin/index.php');
+    exit;
+}
 require_once 'includes/auth.php';
 require_once 'config/database.php';
 require_once 'models/User.php';
@@ -66,7 +70,7 @@ $user_stats = $userModel->getStats();
         <div class="flex items-center">
             <div class="flex-1">
                 <h2 class="text-2xl font-bold mb-2">Selamat Datang, <?= htmlspecialchars($current_user['name']) ?>!</h2>
-                <p class="text-white/80">Kelola konten website SD Integra IV dengan mudah melalui dashboard admin ini.</p>
+                <p class="text-white/80">Kelola konten website SDIP Tunas Bangsa dengan mudah melalui dashboard admin ini.</p>
                 <?php if (Auth::isReadOnly()): ?>
                 <div class="mt-3 flex items-center text-yellow-200">
                     <i class="fas fa-info-circle mr-2"></i>
@@ -88,8 +92,8 @@ $user_stats = $userModel->getStats();
         <div class="bg-white rounded-lg shadow p-6">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-newspaper text-blue-600 text-xl"></i>
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-newspaper text-green-600 text-xl"></i>
                     </div>
                 </div>
                 <div class="ml-4 flex-1">
@@ -114,22 +118,6 @@ $user_stats = $userModel->getStats();
                     <p class="text-sm font-medium text-gray-500">Program Akademik</p>
                     <p class="text-2xl font-semibold text-gray-900"><?= $academic_stats['total'] ?></p>
                     <p class="text-xs text-gray-500 mt-1">Program aktif</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Inovasi -->
-        <div class="bg-white rounded-lg shadow p-6">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-lightbulb text-yellow-600 text-xl"></i>
-                    </div>
-                </div>
-                <div class="ml-4 flex-1">
-                    <p class="text-sm font-medium text-gray-500">Inovasi</p>
-                    <p class="text-2xl font-semibold text-gray-900"><?= $innovation_stats['total'] ?></p>
-                    <p class="text-xs text-gray-500 mt-1">Inovasi aktif</p>
                 </div>
             </div>
         </div>
@@ -255,7 +243,7 @@ $user_stats = $userModel->getStats();
                             </p>
                             <div class="flex items-center text-xs text-gray-500 mt-1">
                                 <span class="capitalize"><?= $news['category'] ?></span>
-                                <span class="mx-1">•</span>
+                                <span class="mx-1">â€¢</span>
                                 <span><?= timeAgo($news['created_at']) ?></span>
                             </div>
                         </div>
@@ -323,7 +311,7 @@ $user_stats = $userModel->getStats();
             <div class="p-6">
                 <div class="text-center py-8">
                     <i class="fas fa-info-circle text-4xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500 mb-2">Website SD Integra IV</p>
+                    <p class="text-gray-500 mb-2">Website SDIP Tunas Bangsa</p>
                     <p class="text-sm text-gray-400">Sistem Manajemen Konten</p>
                 </div>
             </div>

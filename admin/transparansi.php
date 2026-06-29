@@ -181,13 +181,13 @@ include 'includes/admin_header.php';
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <?php
         $categoryNames = [
-            'financial' => ['name' => 'Laporan Keuangan', 'icon' => '💰', 'color' => 'blue'],
-            'budget' => ['name' => 'Anggaran Sekolah', 'icon' => '📊', 'color' => 'green'],
-            'governance' => ['name' => 'Tata Kelola', 'icon' => '🏛️', 'color' => 'purple'],
-            'reports' => ['name' => 'Laporan Berkala', 'icon' => '📋', 'color' => 'yellow'],
-            'policies' => ['name' => 'Kebijakan', 'icon' => '📜', 'color' => 'indigo'],
-            'procurement' => ['name' => 'Pengadaan', 'icon' => '🛒', 'color' => 'pink'],
-            'other' => ['name' => 'Lainnya', 'icon' => '📄', 'color' => 'gray']
+            'financial' => ['name' => 'Laporan Keuangan', 'icon' => 'ðŸ’°', 'color' => 'blue'],
+            'budget' => ['name' => 'Anggaran Sekolah', 'icon' => 'ðŸ“Š', 'color' => 'green'],
+            'governance' => ['name' => 'Tata Kelola', 'icon' => 'ðŸ›ï¸', 'color' => 'purple'],
+            'reports' => ['name' => 'Laporan Berkala', 'icon' => 'ðŸ“‹', 'color' => 'yellow'],
+            'policies' => ['name' => 'Kebijakan', 'icon' => 'ðŸ“œ', 'color' => 'indigo'],
+            'procurement' => ['name' => 'Pengadaan', 'icon' => 'ðŸ›’', 'color' => 'pink'],
+            'other' => ['name' => 'Lainnya', 'icon' => 'ðŸ“„', 'color' => 'gray']
         ];
         
         $totalItems = $stats['total'] ?? 0;
@@ -198,7 +198,7 @@ include 'includes/admin_header.php';
                     <p class="text-sm font-medium text-gray-600">Total Data</p>
                     <p class="text-2xl font-bold text-gray-900"><?php echo $totalItems; ?></p>
                 </div>
-                <div class="text-3xl">📊</div>
+                <div class="text-3xl">ðŸ“Š</div>
             </div>
         </div>
         
@@ -206,7 +206,7 @@ include 'includes/admin_header.php';
             <?php $sectionCount = 0; ?>
             <?php foreach ($stats['by_section'] as $section => $count): ?>
                 <?php if ($sectionCount >= 3) break; ?>
-                <?php $category = $categoryNames[$section] ?? ['name' => $section, 'icon' => '📄', 'color' => 'gray']; ?>
+                <?php $category = $categoryNames[$section] ?? ['name' => $section, 'icon' => 'ðŸ“„', 'color' => 'gray']; ?>
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <div class="flex items-center justify-between">
                         <div>
@@ -226,7 +226,7 @@ include 'includes/admin_header.php';
                         <p class="text-sm font-medium text-gray-600">Aktif</p>
                         <p class="text-2xl font-bold text-gray-900"><?php echo $stats['active'] ?? 0; ?></p>
                     </div>
-                    <div class="text-3xl">✅</div>
+                    <div class="text-3xl">âœ…</div>
                 </div>
             </div>
             <?php $sectionCount++; break; ?>
@@ -260,7 +260,7 @@ include 'includes/admin_header.php';
                     <?php else: ?>
                         <?php foreach ($transparencies as $item): ?>
                         <?php 
-                        $category = $categoryNames[$item['section_type']] ?? ['name' => $item['section_type'], 'icon' => '📄', 'color' => 'gray'];
+                        $category = $categoryNames[$item['section_type']] ?? ['name' => $item['section_type'], 'icon' => 'ðŸ“„', 'color' => 'gray'];
                         ?>
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -343,28 +343,28 @@ include 'includes/admin_header.php';
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Judul *</label>
                             <input type="text" name="title" required 
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Kategori *</label>
                             <select name="section_type" required 
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                                 <option value="">Pilih Kategori</option>
-                                <option value="financial">💰 Laporan Keuangan</option>
-                                <option value="budget">📊 Anggaran Sekolah</option>
-                                <option value="governance">🏛️ Tata Kelola</option>
-                                <option value="reports">📋 Laporan Berkala</option>
-                                <option value="policies">📜 Kebijakan</option>
-                                <option value="procurement">🛒 Pengadaan</option>
-                                <option value="other">📄 Lainnya</option>
+                                <option value="financial">ðŸ’° Laporan Keuangan</option>
+                                <option value="budget">ðŸ“Š Anggaran Sekolah</option>
+                                <option value="governance">ðŸ›ï¸ Tata Kelola</option>
+                                <option value="reports">ðŸ“‹ Laporan Berkala</option>
+                                <option value="policies">ðŸ“œ Kebijakan</option>
+                                <option value="procurement">ðŸ›’ Pengadaan</option>
+                                <option value="other">ðŸ“„ Lainnya</option>
                             </select>
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Konten *</label>
                             <textarea name="content" rows="6" required 
-                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                       placeholder="Deskripsi atau konten transparansi..."></textarea>
                         </div>
                         
@@ -372,7 +372,7 @@ include 'includes/admin_header.php';
                             <label class="block text-sm font-medium text-gray-700 mb-2">Upload File</label>
                             <input type="file" name="file_attachment" 
                                    accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                             <p class="text-sm text-gray-500 mt-1">Format: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG, PNG (Maks. 5MB)</p>
                         </div>
                         
@@ -380,13 +380,13 @@ include 'includes/admin_header.php';
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Urutan</label>
                                 <input type="number" name="sort_order" value="1" min="1"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                             </div>
                             
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                                 <select name="is_active" 
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                                     <option value="1">Aktif</option>
                                     <option value="0">Nonaktif</option>
                                 </select>
@@ -400,7 +400,7 @@ include 'includes/admin_header.php';
                             Batal
                         </button>
                         <button type="submit" 
-                                class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700">
+                                class="px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700">
                             Simpan
                         </button>
                     </div>
@@ -426,35 +426,35 @@ include 'includes/admin_header.php';
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Judul *</label>
                             <input type="text" name="title" id="edit_title" required 
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Kategori *</label>
                             <select name="section_type" id="edit_section_type" required 
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                                 <option value="">Pilih Kategori</option>
-                                <option value="financial">💰 Laporan Keuangan</option>
-                                <option value="budget">📊 Anggaran Sekolah</option>
-                                <option value="governance">🏛️ Tata Kelola</option>
-                                <option value="reports">📋 Laporan Berkala</option>
-                                <option value="policies">📜 Kebijakan</option>
-                                <option value="procurement">🛒 Pengadaan</option>
-                                <option value="other">📄 Lainnya</option>
+                                <option value="financial">ðŸ’° Laporan Keuangan</option>
+                                <option value="budget">ðŸ“Š Anggaran Sekolah</option>
+                                <option value="governance">ðŸ›ï¸ Tata Kelola</option>
+                                <option value="reports">ðŸ“‹ Laporan Berkala</option>
+                                <option value="policies">ðŸ“œ Kebijakan</option>
+                                <option value="procurement">ðŸ›’ Pengadaan</option>
+                                <option value="other">ðŸ“„ Lainnya</option>
                             </select>
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Konten *</label>
                             <textarea name="content" id="edit_content" rows="6" required 
-                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Upload File Baru (opsional)</label>
                             <input type="file" name="file_attachment" 
                                    accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                             <p class="text-sm text-gray-500 mt-1">Kosongkan jika tidak ingin mengubah file</p>
                             <div id="current_file" class="text-sm text-gray-600 mt-1"></div>
                         </div>
@@ -463,13 +463,13 @@ include 'includes/admin_header.php';
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Urutan</label>
                                 <input type="number" name="sort_order" id="edit_sort_order" min="1"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                             </div>
                             
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                                 <select name="is_active" id="edit_is_active"
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
                                     <option value="1">Aktif</option>
                                     <option value="0">Nonaktif</option>
                                 </select>
@@ -483,7 +483,7 @@ include 'includes/admin_header.php';
                             Batal
                         </button>
                         <button type="submit" 
-                                class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700">
+                                class="px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700">
                             Update
                         </button>
                     </div>
@@ -508,7 +508,7 @@ include 'includes/admin_header.php';
         
         const currentFileDiv = document.getElementById('current_file');
         if (item.file_attachment) {
-            currentFileDiv.innerHTML = '📎 File saat ini: ' + item.file_attachment;
+            currentFileDiv.innerHTML = 'ðŸ“Ž File saat ini: ' + item.file_attachment;
         } else {
             currentFileDiv.innerHTML = 'Tidak ada file';
         }

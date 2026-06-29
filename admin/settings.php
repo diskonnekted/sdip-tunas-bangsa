@@ -130,7 +130,7 @@ require_once 'includes/admin_header.php';
                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Nama Sekolah *</label>
                             <input type="text" name="school_name" required
-                                   value="<?= htmlspecialchars($currentSettings['school_name'] ?? 'SD Integra IV') ?>"
+                                   value="<?= htmlspecialchars($currentSettings['school_name'] ?? 'SDIP Tunas Bangsa') ?>"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500">
                         </div>
                         
@@ -243,7 +243,7 @@ require_once 'includes/admin_header.php';
                     </div>
                     
                     <div class="mb-4">
-                        <button type="button" onclick="getCurrentLocation()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        <button type="button" onclick="getCurrentLocation()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
                             <i class="fas fa-location-arrow mr-2"></i>Gunakan Lokasi Saat Ini
                         </button>
                         <button type="button" onclick="showMap()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 ml-2">
@@ -261,13 +261,13 @@ require_once 'includes/admin_header.php';
                 <!-- Social Media -->
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">
-                        <i class="fas fa-share-alt text-blue-600 mr-2"></i>Media Sosial
+                        <i class="fas fa-share-alt text-green-600 mr-2"></i>Media Sosial
                     </h3>
                     
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <i class="fab fa-facebook text-blue-600 mr-2"></i>Facebook
+                                <i class="fab fa-facebook text-green-600 mr-2"></i>Facebook
                             </label>
                             <input type="url" name="facebook_url"
                                    value="<?= htmlspecialchars($currentSettings['facebook_url'] ?? '') ?>"
@@ -297,7 +297,7 @@ require_once 'includes/admin_header.php';
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <i class="fab fa-twitter text-blue-400 mr-2"></i>Twitter
+                                <i class="fab fa-twitter text-green-400 mr-2"></i>Twitter
                             </label>
                             <input type="url" name="twitter_url"
                                    value="<?= htmlspecialchars($currentSettings['twitter_url'] ?? '') ?>"
@@ -329,7 +329,7 @@ require_once 'includes/admin_header.php';
                             <?php endif; ?>
                             
                             <input type="file" name="school_logo" accept="image/*"
-                                   class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                   class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-green-50 file:text-green-700 hover:file:bg-green-100">
                             <p class="text-xs text-gray-500 mt-1">PNG, JPG, GIF (max 2MB)</p>
                         </div>
                         
@@ -374,10 +374,10 @@ require_once 'includes/admin_header.php';
                     <div class="mt-6 pt-6 border-t border-gray-200">
                         <h4 class="text-sm font-medium text-gray-900 mb-2">Preview Frontend</h4>
                         <div class="space-y-2">
-                            <a href="../index.php" target="_blank" class="block text-sm text-blue-600 hover:text-blue-700">
+                            <a href="../index.php" target="_blank" class="block text-sm text-green-600 hover:text-green-700">
                                 <i class="fas fa-external-link-alt mr-1"></i>Lihat Beranda
                             </a>
-                            <a href="../kontak.php" target="_blank" class="block text-sm text-blue-600 hover:text-blue-700">
+                            <a href="../kontak.php" target="_blank" class="block text-sm text-green-600 hover:text-green-700">
                                 <i class="fas fa-external-link-alt mr-1"></i>Lihat Halaman Kontak
                             </a>
                         </div>
@@ -425,7 +425,7 @@ function showMap() {
     map = L.map('map').setView([lat, lng], 15);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: 'Â© OpenStreetMap contributors'
     }).addTo(map);
     
     const marker = L.marker([lat, lng], {draggable: true}).addTo(map);

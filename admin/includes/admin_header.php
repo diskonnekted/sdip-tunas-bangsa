@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/../config/database.php';
 // Ensure user is logged in
 if (!Auth::isLoggedIn()) {
     header('Location: login.php');
@@ -14,7 +15,7 @@ $page_title = $page_title ?? 'Dashboard';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($page_title) ?> - Admin SD Integra IV</title>
+    <title><?= htmlspecialchars($page_title) ?> - Admin SDIP Tunas Bangsa</title>
     <?php include '../includes/favicon.php'; ?>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -24,10 +25,10 @@ $page_title = $page_title ?? 'Dashboard';
                 extend: {
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
                         }
                     }
                 }
@@ -58,11 +59,25 @@ $page_title = $page_title ?? 'Dashboard';
                 <!-- Logo -->
                 <div class="flex items-center px-6 py-4 border-b border-gray-200">
                     <div class="flex items-center">
-                        <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-purple-600 rounded-lg">
-                            <i class="fas fa-graduation-cap text-white"></i>
+                        <?php
+                        // Fetch logo from settings
+                        $logo_db = new Database();
+                        $logo_conn = $logo_db->getConnection();
+                        $logo_stmt = $logo_conn->prepare("SELECT school_logo FROM school_settings LIMIT 1");
+                        $logo_stmt->execute();
+                        $admin_logo = $logo_stmt->fetchColumn();
+                        ?>
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden bg-white shadow-sm">
+                            <?php if ($admin_logo): ?>
+                                <img src="uploads/<?= htmlspecialchars($admin_logo) ?>" alt="Logo" class="w-full h-full object-contain p-1">
+                            <?php else: ?>
+                                <div class="w-full h-full bg-gradient-to-r from-primary-500 to-purple-600 flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-white"></i>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="ml-3">
-                            <h2 class="text-lg font-semibold text-gray-900">SD Integra IV</h2>
+                            <h2 class="text-lg font-semibold text-gray-900">SDIP Tunas Bangsa</h2>
                             <p class="text-sm text-gray-500">Admin Panel</p>
                         </div>
                     </div>
@@ -108,6 +123,15 @@ $page_title = $page_title ?? 'Dashboard';
                                 Data PPDB
                             </a>
                         </li>
+                        
+                        <?php if (Auth::canManageUsers()): ?>
+                        <li>
+                            <a href="students.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'students.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
+                                <i class="fas fa-user-graduate mr-3 text-red-500"></i>
+                                Data Siswa (7KAIH)
+                            </a>
+                        </li>
+                        <?php endif; ?>
 
                         <?php if (Auth::canEditContent()): ?>
                         <li>
@@ -133,7 +157,7 @@ $page_title = $page_title ?? 'Dashboard';
                         </li>
                         <?php endif; ?>
 
-                        <?php if (Auth::canViewSettings()): ?>
+                        <?php if (false && Auth::canViewSettings()): // Sembunyikan menu transparansi sesuai permintaan ?>
                         <li>
                             <a href="transparansi.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'transparansi.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
                                 <i class="fas fa-balance-scale mr-3 text-gray-400"></i>

@@ -502,7 +502,7 @@ try {
             <?php else: ?>
             <!-- Category Grid -->
             <div class="info-header">
-                <h2>Informasi Umum SD Integra IV</h2>
+                <h2>Informasi Umum SDIP Tunas Bangsa</h2>
                 <p>Temukan berbagai informasi penting tentang kegiatan, prosedur, dan dokumen sekolah yang mendukung pendidikan berintegritas</p>
             </div>
             

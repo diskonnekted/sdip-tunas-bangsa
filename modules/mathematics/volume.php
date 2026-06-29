@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Volume Bangun Ruang – SD Integra</title>
+  <title>Volume Bangun Ruang Ã¢â‚¬â€œ SD Integra</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -46,10 +46,10 @@
     .hidden { display: none; }
   </style>
 </head>
-<body class="bg-blue-50 font-sans">
+<body class="bg-green-50 font-sans">
 
   <div class="container mx-auto px-4 py-6 max-w-4xl">
-    <h1 class="text-3xl font-bold text-center text-blue-800 mb-2">Hitung Volume Bangun Ruang</h1>
+    <h1 class="text-3xl font-bold text-center text-green-800 mb-2">Hitung Volume Bangun Ruang</h1>
     <p class="text-center text-gray-600 mb-6">Sentuh bangun, atur ukuran, lalu hitung volumenya!</p>
 
     <!-- Pilih Bangun -->
@@ -58,7 +58,7 @@
         <div class="btn-shape bg-amber-500" onclick="selectShape('kubus')"> Kubus </div>
         <div class="btn-shape bg-emerald-500" onclick="selectShape('balok')"> Balok </div>
         <div class="btn-shape bg-rose-500" onclick="selectShape('tabung')"> Tabung </div>
-        <div class="btn-shape bg-indigo-500" onclick="selectShape('prisma')"> Prisma </div>
+        <div class="btn-shape bg-green-500" onclick="selectShape('prisma')"> Prisma </div>
       </div>
     </div>
 
@@ -73,12 +73,12 @@
 
       <div id="sliders"></div>
       <div class="mt-4">
-        <label class="block font-medium mb-2">Jawaban Anda (cm³):</label>
+        <label class="block font-medium mb-2">Jawaban Anda (cmÃ‚Â³):</label>
         <input type="text" id="user-answer" class="w-full p-3 border rounded-lg text-center text-xl" readonly />
         <div class="mt-3 flex flex-wrap justify-center" id="virtual-keyboard"></div>
       </div>
       <div class="mt-4 text-center">
-        <button class="btn bg-blue-600 text-white px-6 py-3 rounded-lg font-bold" onclick="checkAnswer()">Hitung Volumenya!</button>
+        <button class="btn bg-green-600 text-white px-6 py-3 rounded-lg font-bold" onclick="checkAnswer()">Hitung Volumenya!</button>
       </div>
     </div>
 
@@ -94,10 +94,10 @@
     let dimensions = {};
 
     const shapes = {
-      kubus: { name: "Kubus", params: ['sisi'], formula: "s × s × s" },
-      balok: { name: "Balok", params: ['panjang', 'lebar', 'tinggi'], formula: "p × l × t" },
-      tabung: { name: "Tabung", params: ['jari-jari', 'tinggi'], formula: "π × r² × t (π ≈ 3.14)" },
-      prisma: { name: "Prisma Segitiga", params: ['alas', 'tinggi segitiga', 'tinggi prisma'], formula: "(½ × a × t₁) × t₂" }
+      kubus: { name: "Kubus", params: ['sisi'], formula: "s Ãƒâ€” s Ãƒâ€” s" },
+      balok: { name: "Balok", params: ['panjang', 'lebar', 'tinggi'], formula: "p Ãƒâ€” l Ãƒâ€” t" },
+      tabung: { name: "Tabung", params: ['jari-jari', 'tinggi'], formula: "Ãâ‚¬ Ãƒâ€” rÃ‚Â² Ãƒâ€” t (Ãâ‚¬ Ã¢â€°Ë† 3.14)" },
+      prisma: { name: "Prisma Segitiga", params: ['alas', 'tinggi segitiga', 'tinggi prisma'], formula: "(Ã‚Â½ Ãƒâ€” a Ãƒâ€” tÃ¢â€šÂ) Ãƒâ€” tÃ¢â€šâ€š" }
     };
 
     function selectShape(shape) {
@@ -109,7 +109,7 @@
       // Buat slider
       let sliderHTML = '';
       shapeData.params.forEach(param => {
-        const label = param.replace('tinggi segitiga', 'tinggi Δ').replace('tinggi prisma', 'tinggi');
+        const label = param.replace('tinggi segitiga', 'tinggi ÃŽâ€').replace('tinggi prisma', 'tinggi');
         sliderHTML += `
           <div class="slider-container">
             <label class="block font-medium">${label.charAt(0).toUpperCase() + label.slice(1)} (cm): <span id="val-${param}">5</span></label>
@@ -362,17 +362,17 @@
         // Back Right Face (p2_b, p3_b, p3_t, p2_t)
         
         // Fill Back faces (darker)
-        svgContent += `<path d="M${p1_b.x},${p1_b.y} L${p3_b.x},${p3_b.y} L${p3_t.x},${p3_t.y} L${p1_t.x},${p1_t.y} Z" fill="#6366f1" stroke="#312e81" stroke-width="1" opacity="0.5" />`;
-        svgContent += `<path d="M${p2_b.x},${p2_b.y} L${p3_b.x},${p3_b.y} L${p3_t.x},${p3_t.y} L${p2_t.x},${p2_t.y} Z" fill="#6366f1" stroke="#312e81" stroke-width="1" opacity="0.5" />`;
+        svgContent += `<path d="M${p1_b.x},${p1_b.y} L${p3_b.x},${p3_b.y} L${p3_t.x},${p3_t.y} L${p1_t.x},${p1_t.y} Z" fill="#22c55e" stroke="#14532d" stroke-width="1" opacity="0.5" />`;
+        svgContent += `<path d="M${p2_b.x},${p2_b.y} L${p3_b.x},${p3_b.y} L${p3_t.x},${p3_t.y} L${p2_t.x},${p2_t.y} Z" fill="#22c55e" stroke="#14532d" stroke-width="1" opacity="0.5" />`;
 
         // Front Face (Rectangle) -> No, it's a triangle prism.
         // The front is usually just the edge connecting p1 and p2?
         // Wait, if p3 is back, then p1-p2 is the front edge of the base.
         // So the front face is actually the rectangle p1_b, p2_b, p2_t, p1_t.
-        svgContent += `<path d="M${p1_b.x},${p1_b.y} L${p2_b.x},${p2_b.y} L${p2_t.x},${p2_t.y} L${p1_t.x},${p1_t.y} Z" fill="#818cf8" stroke="#312e81" stroke-width="2" />`;
+        svgContent += `<path d="M${p1_b.x},${p1_b.y} L${p2_b.x},${p2_b.y} L${p2_t.x},${p2_t.y} L${p1_t.x},${p1_t.y} Z" fill="#818cf8" stroke="#14532d" stroke-width="2" />`;
         
         // Top Triangle
-        svgContent += `<path d="M${p1_t.x},${p1_t.y} L${p2_t.x},${p2_t.y} L${p3_t.x},${p3_t.y} Z" fill="#a5b4fc" stroke="#312e81" stroke-width="2" />`;
+        svgContent += `<path d="M${p1_t.x},${p1_t.y} L${p2_t.x},${p2_t.y} L${p3_t.x},${p3_t.y} Z" fill="#a5b4fc" stroke="#14532d" stroke-width="2" />`;
         
         // Bottom Triangle (Visible edges)
         // p1_b to p2_b is drawn by front face.
@@ -380,12 +380,12 @@
         
         // Labels
         // Alas (a)
-        svgContent += `<text x="${ccx}" y="${botY + 20}" fill="#312e81" font-size="14" font-weight="bold" text-anchor="middle">a=${dimensions.alas}</text>`;
+        svgContent += `<text x="${ccx}" y="${botY + 20}" fill="#14532d" font-size="14" font-weight="bold" text-anchor="middle">a=${dimensions.alas}</text>`;
         // Tinggi Prisma (tp)
-        svgContent += `<text x="${p2_b.x + 10}" y="${ccy}" fill="#312e81" font-size="14" font-weight="bold">tp=${dimensions['tinggi prisma']}</text>`;
+        svgContent += `<text x="${p2_b.x + 10}" y="${ccy}" fill="#14532d" font-size="14" font-weight="bold">tp=${dimensions['tinggi prisma']}</text>`;
         // Tinggi Segitiga (t_tri) - Show on top face
-        svgContent += `<line x1="${ccx}" y1="${p3_t.y}" x2="${ccx}" y2="${topY}" stroke="#312e81" stroke-dasharray="4" />`;
-        svgContent += `<text x="${ccx + 5}" y="${topY - t_tri * 0.35}" fill="#312e81" font-size="12" font-weight="bold">tΔ=${dimensions['tinggi segitiga']}</text>`;
+        svgContent += `<line x1="${ccx}" y1="${p3_t.y}" x2="${ccx}" y2="${topY}" stroke="#14532d" stroke-dasharray="4" />`;
+        svgContent += `<text x="${ccx + 5}" y="${topY - t_tri * 0.35}" fill="#14532d" font-size="12" font-weight="bold">tÃŽâ€=${dimensions['tinggi segitiga']}</text>`;
 
       }
 
@@ -421,9 +421,9 @@
 
       const feedbackEl = document.getElementById('feedback-text');
       if (userAns === correct) {
-        feedbackEl.innerHTML = '✅ <span class="text-green-700">Benar!</span><br>Volume = ' + correct + ' cm³';
+        feedbackEl.innerHTML = 'Ã¢Å“â€¦ <span class="text-green-700">Benar!</span><br>Volume = ' + correct + ' cmÃ‚Â³';
       } else {
-        feedbackEl.innerHTML = '❌ <span class="text-red-700">Belum tepat.</span><br>Rumus: ' + shapes[selectedShape].formula + '<br>Volume seharusnya = <strong>' + correct + ' cm³</strong>';
+        feedbackEl.innerHTML = 'Ã¢ÂÅ’ <span class="text-red-700">Belum tepat.</span><br>Rumus: ' + shapes[selectedShape].formula + '<br>Volume seharusnya = <strong>' + correct + ' cmÃ‚Â³</strong>';
       }
 
       document.getElementById('config-section').classList.add('hidden');

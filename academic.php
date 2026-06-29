@@ -14,12 +14,12 @@ include 'includes/header.php';
 ?>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-green-600 via-blue-600 to-indigo-800 pt-32 pb-20 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-green-600 via-green-600 to-green-800 pt-32 pb-20 overflow-hidden">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="absolute inset-0">
             <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
             <div class="absolute top-40 right-20 w-32 h-32 bg-green-300/20 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-blue-300/20 rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-green-300/20 rounded-full blur-xl"></div>
         </div>
         
         <div class="relative container text-center text-white z-10">
@@ -51,8 +51,8 @@ include 'includes/header.php';
             <!-- Loading State -->
             <div id="loading" class="text-center py-20">
                 <div class="relative inline-block">
-                    <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-blue-500 border-opacity-25"></div>
-                    <div class="animate-ping absolute top-0 left-0 h-20 w-20 rounded-full bg-blue-400 opacity-20"></div>
+                    <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-green-500 border-opacity-25"></div>
+                    <div class="animate-ping absolute top-0 left-0 h-20 w-20 rounded-full bg-green-400 opacity-20"></div>
                 </div>
                 <h3 class="mt-6 text-xl font-semibold text-gray-900">Memuat Data Akademik</h3>
                 <p class="mt-2 text-gray-600">Sedang mengambil informasi program akademik...</p>
@@ -124,7 +124,7 @@ include 'includes/header.php';
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" onclick="closeModal()" class="w-full inline-flex justify-center rounded-xl border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" onclick="closeModal()" class="w-full inline-flex justify-center rounded-xl border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
                         Tutup
                     </button>
                 </div>
@@ -188,11 +188,11 @@ include 'includes/header.php';
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                     ${data.map((item, index) => `
                         <div onclick="openModal(${index})" class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer transform hover:-translate-y-2">
-                            <div class="relative h-48 bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center">
+                            <div class="relative h-48 bg-gradient-to-br from-green-500 to-green-500 flex items-center justify-center">
                                 ${item.image ? 
                                     `<img src="${item.image}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover">
                                      <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>` : 
-                                    `<div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-green-500"></div>`
+                                    `<div class="absolute inset-0 bg-gradient-to-br from-green-500 to-green-500"></div>`
                                 }
                                 <div class="relative z-10 text-white text-center p-4">
                                     <i class="fas fa-book text-4xl mb-3 opacity-90 drop-shadow-lg"></i>
@@ -201,7 +201,7 @@ include 'includes/header.php';
                             </div>
                             <div class="p-8">
                                 <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+                                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
                                         ${item.grade_level_name}
                                     </span>
                                     <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
@@ -210,7 +210,7 @@ include 'includes/header.php';
                                 </div>
                                 <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">${item.description}</p>
                                 
-                                <div class="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform">
+                                <div class="flex items-center text-green-600 font-semibold group-hover:translate-x-2 transition-transform">
                                     Selengkapnya <i class="fas fa-arrow-right ml-2"></i>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@ include 'includes/header.php';
                 </div>
 
                 <!-- Additional Info -->
-                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white">
+                <div class="bg-gradient-to-r from-green-600 to-purple-600 rounded-3xl p-12 text-center text-white">
                     <h3 class="text-3xl font-bold mb-6">Mengapa Memilih Program Akademik Kami?</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                         <div class="text-center">
@@ -259,7 +259,7 @@ include 'includes/header.php';
         // Badges
         const badgesContainer = document.getElementById('modalBadges');
         badgesContainer.innerHTML = `
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
                 ${item.grade_level_name}
             </span>
             <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">

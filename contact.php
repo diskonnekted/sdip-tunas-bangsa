@@ -23,14 +23,14 @@ $page_title = 'Hubungi Kami';
         <!-- Background Image & Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="images/sch2.jpg" alt="Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-blue-900/90 to-indigo-900/90"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-green-900/90 to-green-900/90"></div>
         </div>
 
         <!-- Decorative Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
             <div class="absolute top-40 right-20 w-32 h-32 bg-purple-300/20 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-blue-300/20 rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-green-300/20 rounded-full blur-xl"></div>
         </div>
         
         <div class="relative container mx-auto px-4 z-10">
@@ -51,7 +51,11 @@ $page_title = 'Hubungi Kami';
                 </div>
                 
                 <div class="w-full lg:w-1/2 mt-8 lg:mt-0 flex justify-center lg:justify-end">
-                    <img src="upload/humas.png" alt="Tim Humas" class="w-auto max-h-[400px] lg:max-h-[500px] object-contain -mb-20 lg:-mb-32 relative z-0">
+                    <?php if (!empty($school_info['logo'])): ?>
+                        <img src="admin/uploads/<?php echo htmlspecialchars($school_info['logo']); ?>" alt="Logo <?php echo htmlspecialchars($school_info['name']); ?>" class="w-auto max-h-[250px] lg:max-h-[350px] object-contain relative z-0 filter drop-shadow-2xl">
+                    <?php else: ?>
+                        <i class="fas fa-graduation-cap text-9xl text-white opacity-80"></i>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -71,8 +75,8 @@ $page_title = 'Hubungi Kami';
                 <!-- Contact Info -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
                     <div class="bg-white rounded-3xl shadow-xl p-8 text-center group hover:shadow-2xl transition-all duration-500">
-                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
-                            <i class="fas fa-map-marker-alt text-3xl text-blue-600"></i>
+                        <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-200 transition-colors">
+                            <i class="fas fa-map-marker-alt text-3xl text-green-600"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Alamat</h3>
                         <p class="text-gray-600 leading-relaxed">
@@ -99,7 +103,7 @@ $page_title = 'Hubungi Kami';
                         <p class="text-gray-600 leading-relaxed">
                             <strong>Email:</strong> <?php echo htmlspecialchars($contact_info['email'] ?: 'Belum diatur'); ?><br>
                             <?php if (!empty($school_info['website'])): ?>
-                            <strong>Website:</strong> <a href="<?php echo htmlspecialchars($school_info['website']); ?>" target="_blank" class="text-blue-600 hover:text-blue-800"><?php echo htmlspecialchars($school_info['website']); ?></a>
+                            <strong>Website:</strong> <a href="<?php echo htmlspecialchars($school_info['website']); ?>" target="_blank" class="text-green-600 hover:text-green-800"><?php echo htmlspecialchars($school_info['website']); ?></a>
                             <?php endif; ?>
                         </p>
                     </div>
@@ -114,17 +118,17 @@ $page_title = 'Hubungi Kami';
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">
-                                        <i class="fas fa-user mr-2 text-blue-500"></i>Nama Lengkap
+                                        <i class="fas fa-user mr-2 text-green-500"></i>Nama Lengkap
                                     </label>
                                     <input type="text" id="name" name="name" required
-                                           class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all">
+                                           class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">
                                         <i class="fas fa-envelope mr-2 text-green-500"></i>Email
                                     </label>
                                     <input type="email" id="email" name="email" required
-                                           class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all">
+                                           class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all">
                                 </div>
                             </div>
                             
@@ -133,7 +137,7 @@ $page_title = 'Hubungi Kami';
                                     <i class="fas fa-phone mr-2 text-purple-500"></i>Nomor Telepon
                                 </label>
                                 <input type="tel" id="phone" name="phone"
-                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all">
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all">
                             </div>
                             
                             <div>
@@ -141,7 +145,7 @@ $page_title = 'Hubungi Kami';
                                     <i class="fas fa-tag mr-2 text-orange-500"></i>Subjek
                                 </label>
                                 <input type="text" id="subject" name="subject" required
-                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all">
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all">
                             </div>
                             
                             <div>
@@ -149,11 +153,11 @@ $page_title = 'Hubungi Kami';
                                     <i class="fas fa-comment mr-2 text-red-500"></i>Pesan
                                 </label>
                                 <textarea id="message" name="message" rows="5" required
-                                          class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all resize-none"></textarea>
+                                          class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all resize-none"></textarea>
                             </div>
                             
                             <button type="submit"
-                                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                                    class="w-full px-8 py-4 bg-gradient-to-r from-green-500 to-purple-600 hover:from-green-600 hover:to-purple-700 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                                 <i class="fas fa-paper-plane mr-2"></i>Kirim Pesan
                             </button>
                         </form>
@@ -169,7 +173,7 @@ $page_title = 'Hubungi Kami';
                         <!-- Form Instructions -->
                         <div class="mt-8 pt-8 border-t border-gray-100">
                             <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                                <i class="fas fa-info-circle text-blue-500 mr-2"></i>Petunjuk Pengisian
+                                <i class="fas fa-info-circle text-green-500 mr-2"></i>Petunjuk Pengisian
                             </h4>
                             <ul class="space-y-3 text-sm text-gray-600">
                                 <li class="flex items-start">
@@ -197,7 +201,7 @@ $page_title = 'Hubungi Kami';
                         <!-- Office Hours -->
                         <div class="bg-white rounded-3xl shadow-xl p-8">
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">
-                                <i class="fas fa-clock mr-3 text-blue-500"></i>Jam Operasional
+                                <i class="fas fa-clock mr-3 text-green-500"></i>Jam Operasional
                             </h3>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center py-2 border-b border-gray-100">
@@ -213,8 +217,8 @@ $page_title = 'Hubungi Kami';
                                     <span class="text-red-500 font-semibold">Tutup</span>
                                 </div>
                             </div>
-                            <div class="mt-6 p-4 bg-blue-50 rounded-xl">
-                                <p class="text-sm text-blue-800">
+                            <div class="mt-6 p-4 bg-green-50 rounded-xl">
+                                <p class="text-sm text-green-800">
                                     <i class="fas fa-info-circle mr-2"></i>
                                     Untuk kunjungan, mohon membuat janji terlebih dahulu melalui telepon atau email.
                                 </p>
@@ -227,28 +231,28 @@ $page_title = 'Hubungi Kami';
                                 <i class="fas fa-share-alt mr-3 text-green-500"></i>Media Sosial
                             </h3>
                             <div class="grid grid-cols-2 gap-4">
-                                <a href="#" class="flex flex-col items-center justify-center p-4 bg-blue-50 rounded-3xl aspect-square hover:bg-blue-100 transition-all duration-300 group text-center hover:-translate-y-1">
-                                    <div class="bg-blue-600 w-12 h-12 flex items-center justify-center rounded-full mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                                <a href="<?php echo htmlspecialchars($social_media['facebook']); ?>" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-4 bg-green-50 rounded-3xl aspect-square hover:bg-green-100 transition-all duration-300 group text-center hover:-translate-y-1">
+                                    <div class="bg-green-600 w-12 h-12 flex items-center justify-center rounded-full mb-3 group-hover:scale-110 transition-transform shadow-sm">
                                         <i class="fab fa-facebook-f text-white text-xl"></i>
                                     </div>
                                     <div class="w-full">
                                         <p class="font-bold text-gray-900 text-sm mb-1">Facebook</p>
-                                        <p class="text-xs text-gray-600 truncate px-2">@SDIntegralIV</p>
+                                        <p class="text-xs text-gray-600 truncate px-2">@tunasbangsa.bna</p>
                                     </div>
                                 </a>
                                 
-                                <a href="#" class="flex flex-col items-center justify-center p-4 bg-pink-50 rounded-3xl aspect-square hover:bg-pink-100 transition-all duration-300 group text-center hover:-translate-y-1">
+                                <a href="<?php echo htmlspecialchars($social_media['instagram']); ?>" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-4 bg-pink-50 rounded-3xl aspect-square hover:bg-pink-100 transition-all duration-300 group text-center hover:-translate-y-1">
                                     <div class="bg-pink-600 w-12 h-12 flex items-center justify-center rounded-full mb-3 group-hover:scale-110 transition-transform shadow-sm">
                                         <i class="fab fa-instagram text-white text-xl"></i>
                                     </div>
                                     <div class="w-full">
                                         <p class="font-bold text-gray-900 text-sm mb-1">Instagram</p>
-                                        <p class="text-xs text-gray-600 truncate px-2">@sdintegraiv</p>
+                                        <p class="text-xs text-gray-600 truncate px-2">@sdip_tunasbangsa</p>
                                     </div>
                                 </a>
                                 
-                                <a href="#" class="flex flex-col items-center justify-center p-4 bg-sky-50 rounded-3xl aspect-square hover:bg-sky-100 transition-all duration-300 group text-center hover:-translate-y-1">
-                                    <div class="bg-sky-500 w-12 h-12 flex items-center justify-center rounded-full mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                                <a href="#" class="flex flex-col items-center justify-center p-4 bg-green-50 rounded-3xl aspect-square hover:bg-green-100 transition-all duration-300 group text-center hover:-translate-y-1">
+                                    <div class="bg-green-500 w-12 h-12 flex items-center justify-center rounded-full mb-3 group-hover:scale-110 transition-transform shadow-sm">
                                         <i class="fab fa-twitter text-white text-xl"></i>
                                     </div>
                                     <div class="w-full">
@@ -257,13 +261,13 @@ $page_title = 'Hubungi Kami';
                                     </div>
                                 </a>
                                 
-                                <a href="#" class="flex flex-col items-center justify-center p-4 bg-red-50 rounded-3xl aspect-square hover:bg-red-100 transition-all duration-300 group text-center hover:-translate-y-1">
+                                <a href="<?php echo htmlspecialchars($social_media['youtube']); ?>" target="_blank" rel="noopener" class="flex flex-col items-center justify-center p-4 bg-red-50 rounded-3xl aspect-square hover:bg-red-100 transition-all duration-300 group text-center hover:-translate-y-1">
                                     <div class="bg-red-600 w-12 h-12 flex items-center justify-center rounded-full mb-3 group-hover:scale-110 transition-transform shadow-sm">
                                         <i class="fab fa-youtube text-white text-xl"></i>
                                     </div>
                                     <div class="w-full">
                                         <p class="font-bold text-gray-900 text-sm mb-1">YouTube</p>
-                                        <p class="text-xs text-gray-600 truncate px-2">SD Integra IV</p>
+                                        <p class="text-xs text-gray-600 truncate px-2">SDIP Tunas Bangsa</p>
                                     </div>
                                 </a>
                             </div>
@@ -288,9 +292,9 @@ $page_title = 'Hubungi Kami';
     <script>
     // Initialize Leaflet Map
     document.addEventListener('DOMContentLoaded', function() {
-        // Koordinat sekolah (Jakarta Pusat sebagai contoh)
-        const schoolLat = -6.2088;
-        const schoolLng = 106.8456;
+        // Koordinat sekolah SDIP Tunas Bangsa
+        const schoolLat = -7.394153608658456;
+        const schoolLng = 109.71290577116419;
         
         var map = L.map('map').setView([schoolLat, schoolLng], 15);
 
@@ -299,7 +303,7 @@ $page_title = 'Hubungi Kami';
         }).addTo(map);
 
         L.marker([schoolLat, schoolLng]).addTo(map)
-            .bindPopup('<div class="text-center"><b>SD Integra IV</b><br>Jl. Pendidikan No. 123, Jakarta</div>')
+            .bindPopup('<div class="text-center"><b><?php echo addslashes($school_info["name"]); ?></b><br><?php echo addslashes($contact_info["address"]); ?></div>')
             .openPopup();
     });
 
@@ -325,7 +329,7 @@ $page_title = 'Hubungi Kami';
                 showSuccess();
                 this.reset();
             } else {
-                showError();
+                showError(result.errors || [result.message]);
             }
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -341,14 +345,20 @@ $page_title = 'Hubungi Kami';
         }, 5000);
     }
 
-    function showError() {
-        document.getElementById('error').classList.remove('hidden');
+    function showError(errors = []) {
+        const errorDiv = document.getElementById('error');
+        errorDiv.classList.remove('hidden');
         document.getElementById('success').classList.add('hidden');
+        
+        if (errors && errors.length > 0) {
+            errorDiv.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>' + errors.join('<br><i class="fas fa-exclamation-triangle mr-2" style="visibility:hidden"></i>');
+        } else {
+            errorDiv.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Terjadi kesalahan. Silakan coba lagi.';
+        }
     }
 
     function openMaps() {
-        // Replace with actual coordinates
-        const address = encodeURIComponent('Jl. Pendidikan No. 123, Jakarta Pusat');
+        const address = encodeURIComponent('<?php echo addslashes($contact_info["address"]); ?>');
         window.open(`https://maps.google.com/maps?q=${address}`, '_blank');
     }
     </script>

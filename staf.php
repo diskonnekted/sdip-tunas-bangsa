@@ -40,7 +40,7 @@ function getStaffPhotoPath($user) {
     <div class="container">
         <div class="page-header-content">
             <h1>Profil Staf</h1>
-            <p>Daftar staf SD Integra IV</p>
+            <p>Daftar staf SDIP Tunas Bangsa</p>
             <nav class="breadcrumb">
                 <a href="index.php">Beranda</a>
                 <span>/</span>
@@ -117,7 +117,7 @@ function getStaffPhotoPath($user) {
 </section>
 
 <!-- Consultation Section -->
-<section id="consultation" class="py-24 bg-gradient-to-br from-primary-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+<section id="consultation" class="py-24 bg-gradient-to-br from-primary-900 via-green-900 to-slate-900 relative overflow-hidden">
     <!-- Decorative Background Elements -->
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-primary-500/10 -skew-x-12 transform translate-x-20 blur-3xl"></div>
@@ -131,10 +131,10 @@ function getStaffPhotoPath($user) {
             <div class="lg:w-5/12 text-white">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 shadow-lg">
                     <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse"></span>
-                    <span class="text-xs font-bold tracking-wide uppercase text-blue-100">Layanan Digital</span>
+                    <span class="text-xs font-bold tracking-wide uppercase text-green-100">Layanan Digital</span>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Konsultasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-accent-300">Administrasi</span></h2>
-                <p class="text-blue-100 text-lg mb-8 leading-relaxed">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Konsultasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-200 to-accent-300">Administrasi</span></h2>
+                <p class="text-green-100 text-lg mb-8 leading-relaxed">
                     Kami siap membantu Anda dalam urusan administrasi sekolah. Mulai dari keuangan, data siswa, hingga persuratan, semua bisa dikonsultasikan secara online.
                 </p>
                 
@@ -145,7 +145,7 @@ function getStaffPhotoPath($user) {
                         </div>
                         <div>
                             <h4 class="font-bold text-lg text-white">Respon Cepat</h4>
-                            <p class="text-sm text-blue-200">Tim kami akan membalas pesan Anda pada jam kerja (07.00 - 15.00 WIB).</p>
+                            <p class="text-sm text-green-200">Tim kami akan membalas pesan Anda pada jam kerja (07.00 - 15.00 WIB).</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:translate-x-2">
@@ -154,7 +154,7 @@ function getStaffPhotoPath($user) {
                         </div>
                         <div>
                             <h4 class="font-bold text-lg text-white">Privasi Terjaga</h4>
-                            <p class="text-sm text-blue-200">Data dan pertanyaan Anda dijamin kerahasiaannya oleh pihak sekolah.</p>
+                            <p class="text-sm text-green-200">Data dan pertanyaan Anda dijamin kerahasiaannya oleh pihak sekolah.</p>
                         </div>
                     </div>
                 </div>

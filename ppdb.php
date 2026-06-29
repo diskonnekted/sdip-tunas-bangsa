@@ -18,20 +18,20 @@ $extra_head = <<<EOT
                     },
                     colors: {
                         brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9', // Sky blue
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e', // Sky blue
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
                         },
                         primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9', // Sky blue
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e', // Sky blue
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
                         },
                         accent: {
                             500: '#f59e0b', // Amber
@@ -103,7 +103,7 @@ include 'includes/header.php';
                 <span id="success-reg-number" class="text-2xl font-mono font-bold text-brand-600 block mt-2"></span>
             </p>
             
-            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-8 text-left">
+            <div class="bg-green-50 border border-green-100 rounded-2xl p-6 mb-8 text-left">
                 <div class="flex items-start">
                     <i class="fab fa-whatsapp text-2xl text-green-500 mt-1 mr-4"></i>
                     <div>
@@ -186,6 +186,20 @@ include 'includes/header.php';
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Tanggal Lahir <span class="text-red-500">*</span></label>
                             <input type="date" name="dob" id="dob" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring focus:ring-brand-200 transition-all outline-none">
                         </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Jenis Kelamin <span class="text-red-500">*</span></label>
+                            <select name="gender" id="gender" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring focus:ring-brand-200 transition-all outline-none">
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Asal Sekolah</label>
+                            <input type="text" name="previous_school" id="previous_school" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring focus:ring-brand-200 transition-all outline-none" placeholder="Masukkan asal sekolah (opsional)">
+                        </div>
                     </div>
 
                     <div class="mt-8 flex justify-end">
@@ -248,6 +262,14 @@ include 'includes/header.php';
                         <div class="grid grid-cols-3 gap-2 text-sm">
                             <div class="text-slate-500">Tanggal Lahir</div>
                             <div class="col-span-2 font-semibold text-slate-900" id="review_dob">-</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm">
+                            <div class="text-slate-500">Jenis Kelamin</div>
+                            <div class="col-span-2 font-semibold text-slate-900" id="review_gender">-</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm">
+                            <div class="text-slate-500">Asal Sekolah</div>
+                            <div class="col-span-2 font-semibold text-slate-900" id="review_previous_school">-</div>
                         </div>
                         <div class="border-t border-slate-200 my-2"></div>
                         <div class="grid grid-cols-3 gap-2 text-sm">

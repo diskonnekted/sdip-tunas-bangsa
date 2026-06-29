@@ -5,7 +5,7 @@ $page_title = 'Beranda';
 $school_info = getSchoolInfo();
 $contact_info = getContactInfo();
 $social_media = getSocialMedia();
-$body_class = 'font-inter bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100';
+$body_class = 'font-inter bg-gradient-to-br from-slate-50 via-green-50 to-green-100';
 $extra_head = <<<EOT
     <script>
         tailwind.config = {
@@ -17,12 +17,12 @@ $extra_head = <<<EOT
                     },
                     colors: {
                         'primary': {
-                            50: '#eef2ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            800: '#3730a3',
-                            900: '#312e81'
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d'
                         },
                         'accent': {
                             500: '#06d6a0',
@@ -69,9 +69,12 @@ include 'includes/header.php';
 
     <!-- Modern Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <!-- Animated Background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
-            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-accent-500/10 to-accent-500/20"></div>
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0">
+            <img src="images/hero.jpg" alt="SDIP Tunas Bangsa Hero" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-slate-900/40 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-800/30 via-transparent to-transparent"></div>
         </div>
         
         <!-- Floating Geometric Shapes -->
@@ -94,7 +97,7 @@ include 'includes/header.php';
                     <!-- Main Headline -->
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
                         Membentuk
-                        <span class="bg-gradient-to-r from-accent-400 to-yellow-300 bg-clip-text text-transparent animate-pulse-glow">
+                        <span class="bg-gradient-to-r from-primary-400 to-emerald-300 bg-clip-text text-transparent animate-pulse-glow">
                             Generasi
                         </span>
                         <br>Berintegritas
@@ -102,12 +105,12 @@ include 'includes/header.php';
                     
                     <!-- Subtitle -->
                     <p class="text-xl md:text-2xl text-white/80 leading-relaxed mb-8 max-w-2xl">
-                        <?php echo htmlspecialchars($school_info['name']); ?> menghadirkan pendidikan karakter yang holistik dengan menanamkan 9 nilai anti-korupsi sejak dini.
+                        <?php echo htmlspecialchars($school_info['name']); ?> menghadirkan pendidikan karakter yang holistik dengan menanamkan 9 nilai integritas sejak dini.
                     </p>
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="profil.html" class="group inline-flex items-center justify-center px-8 py-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-2xl shadow-2xl hover-lift transition-all duration-300">
+                        <a href="profil.html" class="group inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-2xl shadow-[0_0_20px_rgba(34,197,94,0.3)] hover-lift transition-all duration-300">
                             <i class="fas fa-school mr-3 group-hover:scale-110 transition-transform"></i>
                             Tentang Kami
                             <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
@@ -141,12 +144,12 @@ include 'includes/header.php';
                         <!-- Main Card -->
                         <div class="bg-white/95 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover-lift transition-all duration-500 hover:bg-white shadow-2xl">
                             <div class="flex items-center space-x-4 mb-6">
-                                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg" style="background-color: #4f46e5;">
+                                <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center shadow-lg" style="background-color: #16a34a;">
                                     <i class="fas fa-shield-alt text-white text-3xl"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-2xl font-bold text-gray-800">Pendidikan Karakter</h3>
-                                    <p class="text-primary-600 font-medium">Anti-Korupsi Sejak Dini</p>
+                                    <p class="text-primary-600 font-medium">Integritas Sejak Dini</p>
                                 </div>
                             </div>
                             
@@ -157,15 +160,15 @@ include 'includes/header.php';
                             <!-- Values Grid -->
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="bg-primary-50 rounded-xl p-3 text-center hover:bg-primary-100 transition-all duration-300">
-                                    <div class="text-2xl mb-1">🤝</div>
+                                    <div class="text-2xl mb-1 text-green-600"><i class="fas fa-handshake"></i></div>
                                     <div class="text-xs text-gray-700 font-medium">Kejujuran</div>
                                 </div>
                                 <div class="bg-primary-50 rounded-xl p-3 text-center hover:bg-primary-100 transition-all duration-300">
-                                    <div class="text-2xl mb-1">📚</div>
+                                    <div class="text-2xl mb-1 text-green-600"><i class="fas fa-book-open"></i></div>
                                     <div class="text-xs text-gray-700 font-medium">Tanggung Jawab</div>
                                 </div>
                                 <div class="bg-primary-50 rounded-xl p-3 text-center hover:bg-primary-100 transition-all duration-300">
-                                    <div class="text-2xl mb-1">⏰</div>
+                                    <div class="text-2xl mb-1 text-green-600"><i class="fas fa-clock"></i></div>
                                     <div class="text-xs text-gray-700 font-medium">Disiplin</div>
                                 </div>
                             </div>
@@ -176,7 +179,7 @@ include 'includes/header.php';
                             <i class="fas fa-star text-white text-xl"></i>
                         </div>
                         
-                        <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl flex items-center justify-center animate-float shadow-2xl" style="animation-delay: -3s;">
+                        <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl flex items-center justify-center animate-float shadow-2xl" style="animation-delay: -3s;">
                             <i class="fas fa-heart text-white"></i>
                         </div>
                         
@@ -241,32 +244,32 @@ include 'includes/header.php';
     </section>
 
     <!-- 9 Nilai Integritas Section -->
-    <section class="integrity-values" style="background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%); color: white; padding: 80px 0;">
+    <section class="integrity-values" style="background: linear-gradient(135deg, #166534 0%, #22c55e 100%); color: white; padding: 80px 0;">
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 60px;">
                 <h2 class="section-title" style="color: white; font-size: 2.5rem; margin-bottom: 16px;">
                     9 Nilai Integritas <?php echo htmlspecialchars($school_info['name']); ?>
                 </h2>
                 <p class="section-subtitle" style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">
-                    Membangun karakter anti-korupsi sejak dini untuk generasi Indonesia yang berintegritas
+                    Membangun karakter integritas sejak dini untuk generasi Indonesia yang berintegritas
                 </p>
             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🤝</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-handshake"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Kejujuran</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Berkata benar, tidak menyontek, dan mengakui kesalahan dengan lapang dada</p>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">📚</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-book-open"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Tanggung Jawab</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Mengerjakan tugas dengan sungguh-sungguh dan bertanggung jawab atas perbuatan</p>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">⏰</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-clock"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Disiplin</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Tepat waktu, tertib, dan mengikuti tata tertib sekolah dengan baik</p>
                 </div>
@@ -274,19 +277,19 @@ include 'includes/header.php';
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">⚖️</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-balance-scale"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Keadilan</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Tidak pilih kasih, berbagi dengan teman, dan menghormati perbedaan</p>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">💝</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-heart"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Kepedulian</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Membantu teman yang kesulitan dan menjaga kebersihan lingkungan</p>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🌱</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-leaf"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Kesederhanaan</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Hidup hemat, tidak sombong, dan bersyukur dengan yang dimiliki</p>
                 </div>
@@ -294,19 +297,19 @@ include 'includes/header.php';
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🏃</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-hammer"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Kerja Keras</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Berusaha maksimal, pantang menyerah, dan tidak mudah putus asa</p>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🎯</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-bullseye"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Kemandirian</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Tidak bergantung pada orang lain, berani mengambil keputusan sendiri</p>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3rem; margin-bottom: 16px;">🙏</div>
+                    <div style="font-size: 3rem; margin-bottom: 16px;"><i class="fas fa-fist-raised"></i></div>
                     <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #FEF3C7;">Berani</h3>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Berani mengatakan yang benar, melaporkan pelanggaran, dan membela keadilan</p>
                 </div>
@@ -338,7 +341,7 @@ include 'includes/header.php';
                     </h3>
                     <p style="color: #6B7280; margin-bottom: 24px; font-weight: 500;">Kepala Sekolah</p>
                     <blockquote style="font-style: italic; font-size: 1.1rem; line-height: 1.8; color: #374151; margin-bottom: 24px;">
-                        "Selamat datang di <?php echo htmlspecialchars($school_info['name']); ?>. Kami berkomitmen untuk membentuk generasi yang tidak hanya cerdas secara akademik, tetapi juga memiliki karakter yang kuat dan integritas yang tinggi. Melalui pendidikan anti-korupsi sejak dini, kami mempersiapkan anak-anak untuk menjadi pemimpin masa depan yang jujur dan bertanggung jawab."
+                        "Selamat datang di <?php echo htmlspecialchars($school_info['name']); ?>. Kami berkomitmen untuk membentuk generasi yang tidak hanya cerdas secara akademik, tetapi juga memiliki karakter yang kuat dan integritas yang tinggi. Melalui pendidikan integritas sejak dini, kami mempersiapkan anak-anak untuk menjadi pemimpin masa depan yang jujur dan bertanggung jawab."
                     </blockquote>
                     <p style="font-weight: 600; color: #1E40AF;">
                         <?php echo htmlspecialchars($school_info['motto']); ?>

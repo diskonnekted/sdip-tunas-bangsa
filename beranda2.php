@@ -19,12 +19,12 @@ $extra_head = <<<EOT
                     },
                     colors: {
                         brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9', // Sky blue
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e', // Sky blue
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
                         },
                         accent: {
                             500: '#f59e0b', // Amber
@@ -33,7 +33,7 @@ $extra_head = <<<EOT
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'glow': '0 0 15px rgba(14, 165, 233, 0.3)'
+                        'glow': '0 0 15px rgba(34, 197, 94, 0.3)'
                     }
                 }
             }
@@ -120,7 +120,7 @@ include 'includes/header.php';
 <section class="py-24 bg-slate-50 relative overflow-hidden">
     <!-- Decorative Background -->
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse"></div>
         <div class="absolute top-0 right-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" style="animation-delay: 2s"></div>
     </div>
 
@@ -134,10 +134,10 @@ include 'includes/header.php';
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Card 1: Integritas -->
             <div class="group relative bg-white rounded-[2.5rem] p-10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div class="relative z-10">
-                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 mb-8 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-500 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 mb-8 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                         <i class="fas fa-handshake text-3xl"></i>
                     </div>
                     

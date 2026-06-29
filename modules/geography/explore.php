@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Jelajahi Indonesia – SD Integra</title>
+  <title>Jelajahi Indonesia â€“ SD Integra</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -34,7 +34,7 @@
 
     /* Lautan background */
     #Lautan rect {
-      fill: #e0f2fe !important; /* Sky-100 */
+      fill: #dcfce7 !important; /* Sky-100 */
       stroke: none;
     }
 
@@ -75,7 +75,7 @@
     .btn:hover { background: #0b7a75; }
   </style>
 </head>
-<body class="bg-sky-50 font-sans">
+<body class="bg-green-50 font-sans">
 
   <div class="container mx-auto px-4 py-6 max-w-6xl">
     <h1 class="text-3xl font-bold text-center text-emerald-800 mb-2">Jelajahi Kenampakan Alam Indonesia</h1>
@@ -85,7 +85,7 @@
     <div id="map-view" class="block">
       <div class="flex flex-col lg:flex-row items-center gap-6">
         <div class="w-full lg:w-3/4">
-          <div style="overflow: hidden; border-radius: 12px; background: #e0f2fe; padding: 4px; border: 4px solid #fff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+          <div style="overflow: hidden; border-radius: 12px; background: #dcfce7; padding: 4px; border: 4px solid #fff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
             <!-- Inject SVG Here -->
             <?php
               $svgPath = 'indonesia.svg';
@@ -105,13 +105,13 @@
         <div class="w-full lg:w-1/4">
           <div id="default-info" class="info-box text-center w-full">
             <p class="text-gray-500">Sentuh provinsi di peta untuk melihat informasi kenampakan alamnya!</p>
-            <button id="start-quiz-btn" class="btn mt-4 w-full">🧠 Mulai Kuis!</button>
+            <button id="start-quiz-btn" class="btn mt-4 w-full">ðŸ§  Mulai Kuis!</button>
           </div>
           <div id="province-info" class="info-box hidden w-full">
             <h3 id="info-title" class="text-lg font-bold text-emerald-800 border-b pb-2 mb-2"></h3>
             <p id="info-desc" class="text-sm text-gray-600"></p>
             <p id="info-feature" class="mt-3 font-medium text-emerald-700 bg-emerald-50 p-2 rounded"></p>
-            <button id="quiz-btn" class="btn mt-4 w-full">🧠 Uji Pengetahuanmu!</button>
+            <button id="quiz-btn" class="btn mt-4 w-full">ðŸ§  Uji Pengetahuanmu!</button>
           </div>
         </div>
       </div> <!-- ./flex -->
@@ -211,7 +211,7 @@
 
       document.getElementById('info-title').textContent = data.name;
       document.getElementById('info-desc').textContent = "Pelajari kenampakan alam unggulannya!";
-      document.getElementById('info-feature').textContent = "📍 " + data.feature;
+      document.getElementById('info-feature').textContent = "ðŸ“ " + data.feature;
       document.getElementById('default-info').classList.add('hidden');
       document.getElementById('province-info').classList.remove('hidden');
     }
@@ -329,9 +329,9 @@
       document.getElementById('score-text').textContent = `Skor: ${score} dari ${quizQuestions.length}`;
       
       let feedback = "";
-      if (percentage === 100) feedback = "🎉 Luar biasa! Kamu Juara Integritas Geografi!";
-      else if (percentage >= 70) feedback = "👍 Hebat! Kamu sudah mengenal Indonesia dengan baik.";
-      else feedback = "💡 Terus belajar, ya! Setiap wilayah Indonesia punya keajaiban.";
+      if (percentage === 100) feedback = "ðŸŽ‰ Luar biasa! Kamu Juara Integritas Geografi!";
+      else if (percentage >= 70) feedback = "ðŸ‘ Hebat! Kamu sudah mengenal Indonesia dengan baik.";
+      else feedback = "ðŸ’¡ Terus belajar, ya! Setiap wilayah Indonesia punya keajaiban.";
 
       document.getElementById('feedback').textContent = feedback;
       resultBox.classList.remove('hidden');

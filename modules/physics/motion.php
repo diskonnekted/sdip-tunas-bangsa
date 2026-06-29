@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Gaya dan Gerak – SD Integra</title>
+  <title>Gaya dan Gerak Ã¢â‚¬â€œ SD Integra</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       overscroll-behavior: contain;
       touch-action: none;
-      background: #f0f9ff;
+      background: #f0fdf4;
     }
     .hidden { display: none; }
     #playground {
       width: 100%;
       height: 300px;
-      background: #e0f2fe;
-      border: 2px dashed #0ea5e9;
+      background: #dcfce7;
+      border: 2px dashed #22c55e;
       border-radius: 12px;
       position: relative;
       overflow: hidden;
@@ -84,12 +84,12 @@
 <body class="font-sans">
 
   <div class="container mx-auto px-4 py-6 max-w-4xl no-select">
-    <h1 class="text-3xl font-bold text-center text-blue-800 mb-2">Eksperimen Gaya dan Gerak</h1>
+    <h1 class="text-3xl font-bold text-center text-green-800 mb-2">Eksperimen Gaya dan Gerak</h1>
     <p class="text-center text-gray-600 mb-6">Tarik benda dengan jari/mouse, lalu amati gerakannya!</p>
 
     <!-- Pilih Benda -->
     <div class="mb-6 bg-white p-4 rounded-lg shadow-sm">
-      <h2 class="font-bold mb-2 text-blue-900">Pilih Benda:</h2>
+      <h2 class="font-bold mb-2 text-green-900">Pilih Benda:</h2>
       <div class="btn-group">
         <div class="btn-choice active" onclick="selectObject('kotak', this)"> Kotak Kayu </div>
         <div class="btn-choice" onclick="selectObject('bola', this)"> Bola Besi </div>
@@ -99,7 +99,7 @@
 
     <!-- Pilih Permukaan -->
     <div class="mb-6 bg-white p-4 rounded-lg shadow-sm">
-      <h2 class="font-bold mb-2 text-blue-900">Pilih Permukaan:</h2>
+      <h2 class="font-bold mb-2 text-green-900">Pilih Permukaan:</h2>
       <div class="btn-group">
         <div class="btn-choice active" onclick="selectSurface('smooth', this)"> Licin (Es) </div>
         <div class="btn-choice" onclick="selectSurface('rough', this)"> Kasar (Karpet) </div>
@@ -108,18 +108,18 @@
 
     <!-- Playground -->
     <div id="playground" class="surface-smooth shadow-inner">
-      <div id="moving-object" class="object bg-amber-500 text-3xl">📦</div>
-      <div id="force-arrow" style="position: absolute; display: none; color: #ef4444; font-size: 32px; font-weight: bold; pointer-events: none; z-index: 10;">→</div>
+      <div id="moving-object" class="object bg-amber-500 text-3xl">Ã°Å¸â€œÂ¦</div>
+      <div id="force-arrow" style="position: absolute; display: none; color: #ef4444; font-size: 32px; font-weight: bold; pointer-events: none; z-index: 10;">Ã¢â€ â€™</div>
     </div>
 
     <!-- Info Dinamis -->
-    <div class="info-box border-l-4 border-blue-500">
+    <div class="info-box border-l-4 border-green-500">
       <p id="info-text" class="text-lg">Sentuh dan tahan benda, lalu geser untuk menarik!</p>
     </div>
 
     <!-- Kuis Mini -->
-    <div class="mt-8 bg-blue-50 p-6 rounded-xl border border-blue-100">
-      <h3 class="font-bold text-lg mb-3 text-blue-900">🧠 Kuis Cepat:</h3>
+    <div class="mt-8 bg-green-50 p-6 rounded-xl border border-green-100">
+      <h3 class="font-bold text-lg mb-3 text-green-900">Ã°Å¸Â§Â  Kuis Cepat:</h3>
       <p class="mb-3 text-gray-700">Agar benda bergerak lurus ke kanan, gaya harus diberikan ke arah...</p>
       <div class="flex gap-3">
         <button class="btn-choice bg-white" onclick="checkQuiz('kiri')">Kiri</button>
@@ -169,13 +169,13 @@
       obj.classList.remove('bg-amber-500', 'bg-gray-600', 'bg-red-400');
       
       if (type === 'kotak') {
-          obj.innerHTML = '📦';
+          obj.innerHTML = 'Ã°Å¸â€œÂ¦';
           obj.classList.add('bg-amber-500');
       } else if (type === 'bola') {
-          obj.innerHTML = '⚽';
+          obj.innerHTML = 'Ã¢Å¡Â½';
           obj.classList.add('bg-gray-600');
       } else {
-          obj.innerHTML = '🎈';
+          obj.innerHTML = 'Ã°Å¸Å½Ë†';
           obj.classList.add('bg-red-400');
       }
       
@@ -276,7 +276,7 @@
       // Rotate arrow based on angle
       const angle = Math.atan2(dy, dx) * 180 / Math.PI;
       arrow.style.transform = `rotate(${angle}deg)`;
-      arrow.innerHTML = '→'; 
+      arrow.innerHTML = 'Ã¢â€ â€™'; 
 
       // Physics Simulation Logic
       const mass = massFactors[currentObject];
@@ -319,9 +319,9 @@
       const massText = currentObject === 'bola' ? 'besar' : (currentObject === 'balon' ? 'kecil' : 'sedang');
       
       infoText.innerHTML = `
-        <span class="font-bold text-blue-600">Status Fisika:</span><br>
-        • Gaya Gesek: <strong>${frictionText}</strong> (Permukaan ${currentSurface === 'rough' ? 'Kasar' : 'Licin'})<br>
-        • Massa Benda: <strong>${massText}</strong> (${currentObject === 'kotak' ? 'Kotak Kayu' : (currentObject === 'bola' ? 'Bola Besi' : 'Balon')})
+        <span class="font-bold text-green-600">Status Fisika:</span><br>
+        Ã¢â‚¬Â¢ Gaya Gesek: <strong>${frictionText}</strong> (Permukaan ${currentSurface === 'rough' ? 'Kasar' : 'Licin'})<br>
+        Ã¢â‚¬Â¢ Massa Benda: <strong>${massText}</strong> (${currentObject === 'kotak' ? 'Kotak Kayu' : (currentObject === 'bola' ? 'Bola Besi' : 'Balon')})
       `;
     }
 
@@ -337,10 +337,10 @@
       fb.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
       
       if (answer === 'kanan') {
-        fb.innerHTML = '✅ <strong>Benar!</strong> Gaya dorong/tarik ke kanan menyebabkan benda bergerak ke kanan.';
+        fb.innerHTML = 'Ã¢Å“â€¦ <strong>Benar!</strong> Gaya dorong/tarik ke kanan menyebabkan benda bergerak ke kanan.';
         fb.classList.add('bg-green-100', 'text-green-800');
       } else {
-        fb.innerHTML = '❌ <strong>Kurang tepat.</strong> Ingat, benda bergerak searah dengan gaya resultan yang diberikan.';
+        fb.innerHTML = 'Ã¢ÂÅ’ <strong>Kurang tepat.</strong> Ingat, benda bergerak searah dengan gaya resultan yang diberikan.';
         fb.classList.add('bg-red-100', 'text-red-800');
       }
       fb.classList.remove('hidden');

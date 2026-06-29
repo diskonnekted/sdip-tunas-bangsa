@@ -130,10 +130,10 @@ function sendNotificationEmail($name, $email, $subject, $message) {
     // You can implement email sending here using PHPMailer or similar
     // This is just a placeholder for the functionality
     
-    $to = 'admin@sdintegraiv.sch.id';
+    $to = 'info@sdiptunasbangsa.sch.id';
     $emailSubject = 'Pesan Baru dari Website: ' . $subject;
     $emailBody = "
-        Pesan baru dari website SD Integra IV:
+        Pesan baru dari website SDIP Tunas Bangsa:
         
         Nama: $name
         Email: $email
@@ -148,7 +148,7 @@ function sendNotificationEmail($name, $email, $subject, $message) {
     ";
     
     $headers = [
-        'From: noreply@sdintegraiv.sch.id',
+        'From: noreply@sdiptunasbangsa.sch.id',
         'Reply-To: ' . $email,
         'X-Mailer: PHP/' . phpversion(),
         'Content-Type: text/plain; charset=UTF-8'

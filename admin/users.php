@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($action) {
         case 'create':
             $roleIn = isset($_POST['role']) ? strtolower(trim($_POST['role'])) : '';
-            $allowedRoles = ['super_admin','admin','guru','staf','demo'];
+            $allowedRoles = ['super_admin','admin','guru','staf','orang_tua','demo'];
             $cleanRole = in_array($roleIn, $allowedRoles) ? $roleIn : 'guru';
             $result = $userModel->create(
                 $_POST['username'],
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
         case 'update':
             $roleIn = isset($_POST['role']) ? strtolower(trim($_POST['role'])) : '';
-            $allowedRoles = ['super_admin','admin','guru','staf','demo'];
+            $allowedRoles = ['super_admin','admin','guru','staf','orang_tua','demo'];
             $cleanRole = in_array($roleIn, $allowedRoles) ? $roleIn : 'guru';
             $result = $userModel->update(
                 $_POST['user_id'],
@@ -215,7 +215,7 @@ $page_title = 'User Management';
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-bold text-gray-900">User Management</h2>
             <?php if (!Auth::isReadOnly()): ?>
-            <button onclick="openCreateModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+            <button onclick="openCreateModal()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
                 <i class="fas fa-plus mr-2"></i>Tambah User
             </button>
             <?php endif; ?>
@@ -229,16 +229,16 @@ $page_title = 'User Management';
                         <p class="text-sm font-medium text-gray-600">Total Users</p>
                         <p class="text-2xl font-bold text-gray-900"><?= $stats['total'] ?></p>
                     </div>
-                    <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    <i class="fas fa-users text-green-600 text-2xl"></i>
                 </div>
             </div>
             <div class="bg-white p-6 rounded-lg shadow">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm font-medium text-gray-600">Admin</p>
-                        <p class="text-2xl font-bold text-blue-600"><?= ($stats['admin'] ?? 0) + ($stats['superadmin'] ?? 0) ?></p>
+                        <p class="text-2xl font-bold text-green-600"><?= ($stats['admin'] ?? 0) + ($stats['superadmin'] ?? 0) ?></p>
                     </div>
-                    <i class="fas fa-user-shield text-blue-600 text-2xl"></i>
+                    <i class="fas fa-user-shield text-green-600 text-2xl"></i>
                 </div>
             </div>
             <div class="bg-white p-6 rounded-lg shadow">
@@ -268,10 +268,10 @@ $page_title = 'User Management';
             <div class="flex-1 min-w-64">
                 <input type="text" name="search" placeholder="Cari username, email, atau nama..." 
                        value="<?= htmlspecialchars($search) ?>"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
             <div>
-                <select name="role" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select name="role" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                     <option value="">Semua Role</option>
                     <option value="super_admin" <?= $role_filter === 'super_admin' ? 'selected' : '' ?>>Super Admin</option>
                     <option value="admin" <?= $role_filter === 'admin' ? 'selected' : '' ?>>Admin</option>
@@ -280,14 +280,14 @@ $page_title = 'User Management';
                 </select>
             </div>
             <div>
-                <select name="status" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select name="status" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                     <option value="">Semua Status</option>
                     <option value="active" <?= $status_filter === 'active' ? 'selected' : '' ?>>Active</option>
                     <option value="inactive" <?= $status_filter === 'inactive' ? 'selected' : '' ?>>Inactive</option>
                     <option value="suspended" <?= $status_filter === 'suspended' ? 'selected' : '' ?>>Suspended</option>
                 </select>
             </div>
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
                 <i class="fas fa-search mr-2"></i>Cari
             </button>
             <a href="users.php" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">
@@ -336,10 +336,10 @@ $page_title = 'User Management';
                     <?php if (!Auth::isReadOnly()): ?>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div class="flex space-x-2">
-                            <button onclick="openInfoModal(<?= $user['id'] ?>)" class="text-blue-600 hover:text-blue-900" title="Detail Info">
+                            <button onclick="openInfoModal(<?= $user['id'] ?>)" class="text-green-600 hover:text-green-900" title="Detail Info">
                                 <i class="fas fa-info-circle"></i>
                             </button>
-                            <button onclick="openEditModal(<?= $user['id'] ?>)" class="text-indigo-600 hover:text-indigo-900" title="Edit">
+                            <button onclick="openEditModal(<?= $user['id'] ?>)" class="text-green-600 hover:text-green-900" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </button>
                             <button onclick="openPasswordModal(<?= $user['id'] ?>)" class="text-yellow-600 hover:text-yellow-900">
@@ -511,7 +511,7 @@ $page_title = 'User Management';
         function getRoleColorClass(role) {
             switch(role) {
                 case 'super_admin': return 'bg-purple-100 text-purple-800';
-                case 'admin': return 'bg-blue-100 text-blue-800';
+                case 'admin': return 'bg-green-100 text-green-800';
                 case 'guru': return 'bg-green-100 text-green-800';
                 case 'staf': return 'bg-yellow-100 text-yellow-800';
                 default: return 'bg-gray-100 text-gray-800';

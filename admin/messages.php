@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             $result = $contactMessage->updateStatus(
                 $_POST['id'], 
                 $_POST['status'], 
-                $_SESSION['user_username'] ?? 'Admin',
+                $_SESSION['user_id'],
                 $_POST['admin_notes'] ?? null
             );
             echo json_encode($result);
@@ -118,8 +118,8 @@ include 'includes/admin_header.php';
         <div class="bg-white rounded-lg shadow p-6">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-inbox text-blue-600 text-xl"></i>
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-inbox text-green-600 text-xl"></i>
                     </div>
                 </div>
                 <div class="ml-4 flex-1">
@@ -182,12 +182,12 @@ include 'includes/admin_header.php';
                 <label class="block text-sm font-medium text-gray-700 mb-2">Cari Pesan</label>
                 <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" 
                        placeholder="Cari nama, email, subjek..." 
-                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
             </div>
             
             <div class="w-full sm:w-auto">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Tipe</label>
-                <select name="type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <select name="type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
                     <option value="">Semua Tipe</option>
                     <option value="general" <?php echo $type_filter === 'general' ? 'selected' : ''; ?>>Umum</option>
                     <option value="teacher" <?php echo $type_filter === 'teacher' ? 'selected' : ''; ?>>Guru</option>
@@ -198,7 +198,7 @@ include 'includes/admin_header.php';
 
             <div class="w-full sm:w-auto">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                <select name="status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <select name="status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
                     <option value="">Semua Status</option>
                     <option value="unread" <?php echo $status_filter === 'unread' ? 'selected' : ''; ?>>Belum Dibaca</option>
                     <option value="read" <?php echo $status_filter === 'read' ? 'selected' : ''; ?>>Sudah Dibaca</option>
@@ -208,7 +208,7 @@ include 'includes/admin_header.php';
             </div>
             
             <div class="flex gap-2">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
                     <i class="fas fa-search mr-2"></i>Filter
                 </button>
                 
@@ -256,11 +256,11 @@ include 'includes/admin_header.php';
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <?php foreach ($messages as $message): ?>
-                            <tr class="hover:bg-gray-50 <?php echo $message['status'] === 'unread' ? 'bg-blue-50' : ''; ?>">
+                            <tr class="hover:bg-gray-50 <?php echo $message['status'] === 'unread' ? 'bg-green-50' : ''; ?>">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 w-10 h-10">
-                                            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                                            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
                                                 <?php echo strtoupper(substr($message['name'], 0, 2)); ?>
                                             </div>
                                         </div>
@@ -279,7 +279,7 @@ include 'includes/admin_header.php';
                                     $typeLabel = 'Umum';
                                     switch($message['recipient_type'] ?? 'general') {
                                         case 'teacher':
-                                            $typeClass = 'bg-indigo-100 text-indigo-800';
+                                            $typeClass = 'bg-green-100 text-green-800';
                                             $typeLabel = 'Guru';
                                             break;
                                         case 'principal':
@@ -287,7 +287,7 @@ include 'includes/admin_header.php';
                                             $typeLabel = 'Kepsek';
                                             break;
                                         case 'staff':
-                                            $typeClass = 'bg-blue-100 text-blue-800';
+                                            $typeClass = 'bg-green-100 text-green-800';
                                             $typeLabel = 'Staf';
                                             break;
                                     }
@@ -311,7 +311,7 @@ include 'includes/admin_header.php';
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium space-x-2">
                                     <button onclick="viewMessage(<?php echo $message['id']; ?>)" 
-                                            class="text-blue-600 hover:text-blue-900 transition-colors" title="Lihat">
+                                            class="text-green-600 hover:text-green-900 transition-colors" title="Lihat">
                                         <i class="fas fa-eye"></i>
                                     </button>
                                     
@@ -479,7 +479,7 @@ async function viewMessage(id) {
         // Show loading state
         showModal('Detail Pesan', `
             <div class="flex items-center justify-center py-8">
-                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
                 <span class="ml-2 text-gray-600">Memuat detail pesan...</span>
             </div>
         `);
@@ -521,11 +521,11 @@ async function viewMessage(id) {
             const content = `
                 <div class="space-y-6">
                     <!-- Header Info -->
-                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+                    <div class="bg-gradient-to-r from-green-50 to-purple-50 p-6 rounded-lg">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
                                 <div class="flex items-center space-x-3 mb-3">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                                         ${msg.name.substring(0, 2).toUpperCase()}
                                     </div>
                                     <div>
@@ -550,9 +550,9 @@ async function viewMessage(id) {
                             <label class="block text-sm font-medium text-gray-700 mb-2">Tipe Penerima</label>
                             <div class="bg-gray-50 p-3 rounded-lg">
                                 <span class="px-2 py-1 rounded-full text-xs font-medium ${
-                                    msg.recipient_type === 'teacher' ? 'bg-indigo-100 text-indigo-800' :
+                                    msg.recipient_type === 'teacher' ? 'bg-green-100 text-green-800' :
                                     msg.recipient_type === 'principal' ? 'bg-purple-100 text-purple-800' :
-                                    msg.recipient_type === 'staff' ? 'bg-blue-100 text-blue-800' :
+                                    msg.recipient_type === 'staff' ? 'bg-green-100 text-green-800' :
                                     'bg-gray-100 text-gray-800'
                                 }">
                                     ${
@@ -603,7 +603,7 @@ async function viewMessage(id) {
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-200">
                         <a href="mailto:${escapeHtml(msg.email)}?subject=Re: ${encodeURIComponent(msg.subject)}" 
-                           class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                           class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                             <i class="fas fa-reply mr-2"></i>Balas via Email
                         </a>
                         

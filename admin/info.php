@@ -163,12 +163,12 @@ require_once 'includes/admin_header.php';
 
         <!-- Statistics -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-blue-50 rounded-lg p-4">
+            <div class="bg-green-50 rounded-lg p-4">
                 <div class="flex items-center">
-                    <i class="fas fa-bullhorn text-blue-600 text-xl mr-3"></i>
+                    <i class="fas fa-bullhorn text-green-600 text-xl mr-3"></i>
                     <div>
-                        <p class="text-sm text-blue-600 font-medium">Pengumuman</p>
-                        <p class="text-xl font-bold text-blue-900"><?= $type_counts['pengumuman'] ?? 0 ?></p>
+                        <p class="text-sm text-green-600 font-medium">Pengumuman</p>
+                        <p class="text-xl font-bold text-green-900"><?= $type_counts['pengumuman'] ?? 0 ?></p>
                     </div>
                 </div>
             </div>
@@ -291,7 +291,7 @@ require_once 'includes/admin_header.php';
                                     <p class="text-sm text-gray-500 truncate"><?= htmlspecialchars(substr($info['content'], 0, 100)) ?>...</p>
                                     <?php if ($info['attachment']): ?>
                                     <div class="mt-1">
-                                        <span class="inline-flex items-center text-xs text-blue-600">
+                                        <span class="inline-flex items-center text-xs text-green-600">
                                             <i class="fas fa-paperclip mr-1"></i>
                                             Ada lampiran
                                         </span>
@@ -301,7 +301,7 @@ require_once 'includes/admin_header.php';
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                 <?= $generalInfo->getTypeName($info['type']) ?>
                             </span>
                         </td>
@@ -333,11 +333,11 @@ require_once 'includes/admin_header.php';
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-end space-x-2">
                                 <button onclick="viewInfo(<?= $info['id'] ?>)" 
-                                        class="text-blue-600 hover:text-blue-900" title="Lihat Detail">
+                                        class="text-green-600 hover:text-green-900" title="Lihat Detail">
                                     <i class="fas fa-eye"></i>
                                 </button>
                                 <button onclick="editInfo(<?= $info['id'] ?>)" 
-                                        class="text-indigo-600 hover:text-indigo-900" title="Edit">
+                                        class="text-green-600 hover:text-green-900" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button onclick="deleteInfo(<?= $info['id'] ?>, '<?= htmlspecialchars($info['title']) ?>')" 

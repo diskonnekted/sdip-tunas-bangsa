@@ -50,7 +50,7 @@ include 'includes/header.php';
         <!-- Module Card 1: Biologi -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift group border border-gray-100 animate-fade-in-up delay-300">
             <div class="relative h-48 overflow-hidden">
-                <img src="admin/uploads/learning/bio.jpg" alt="Biologi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <img src="images/belajar.jpg" alt="Biologi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
                     <span class="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block">Biologi</span>
@@ -77,7 +77,7 @@ include 'includes/header.php';
         <!-- Module Card 2: Kimia -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift group border border-gray-100 animate-fade-in-up delay-400">
             <div class="relative h-48 overflow-hidden">
-                <img src="admin/uploads/learning/chem.jpg" alt="Kimia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <img src="images/bersama guru.jpg" alt="Kimia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
                     <span class="bg-purple-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block">Kimia</span>
@@ -104,10 +104,10 @@ include 'includes/header.php';
         <!-- Module Card 3: Geografi -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift group border border-gray-100 animate-fade-in-up delay-500">
             <div class="relative h-48 overflow-hidden">
-                <img src="admin/uploads/learning/geo.jpg" alt="Geografi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <img src="images/field trip.jpg" alt="Geografi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
-                    <span class="bg-blue-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block">Geografi</span>
+                    <span class="bg-green-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block">Geografi</span>
                 </div>
             </div>
             <div class="p-6">
@@ -131,7 +131,7 @@ include 'includes/header.php';
         <!-- Module Card 4: Matematika -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift group border border-gray-100 animate-fade-in-up delay-300">
             <div class="relative h-48 overflow-hidden">
-                <img src="admin/uploads/learning/math.jpg" alt="Matematika" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <img src="images/kegiatan guru.jpg" alt="Matematika" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
                     <span class="bg-red-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block">Matematika</span>
@@ -158,7 +158,7 @@ include 'includes/header.php';
         <!-- Module Card 5: Fisika -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift group border border-gray-100 animate-fade-in-up delay-400">
             <div class="relative h-48 overflow-hidden">
-                <img src="admin/uploads/learning/phy.jpg" alt="Fisika" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <img src="images/mengaji.jpg" alt="Fisika" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-4 left-4 text-white">
                     <span class="bg-yellow-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block">Fisika</span>

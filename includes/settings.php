@@ -64,7 +64,7 @@ class Settings {
      */
     public static function getSchoolInfo() {
         return [
-            'name' => self::get('school_name', 'SD Integra IV'),
+            'name' => self::get('school_name', 'SDIP Tunas Bangsa'),
             'address' => self::get('school_address', 'Jl. Pendidikan No. 123, Jakarta'),
             'phone' => self::get('school_phone', '(021) 12345678'),
             'email' => self::get('school_email', 'info@sdintegraiv.sch.id'),

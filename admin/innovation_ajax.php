@@ -72,7 +72,7 @@ try {
                         </div>
                         
                         <div class="flex items-center gap-4 mb-3">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
                                 <i class="<?= $innovation->getCategoryIcon($innovationData['category']) ?> mr-2"></i>
                                 <?= $innovation->getCategoryName($innovationData['category']) ?>
                             </span>
@@ -94,7 +94,7 @@ try {
                             </span>
                             <?php if ($innovationData['video_url']): ?>
                             <a href="<?= htmlspecialchars($innovationData['video_url']) ?>" target="_blank" 
-                               class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                               class="inline-flex items-center text-green-600 hover:text-green-800">
                                 <i class="fas fa-video mr-1"></i>Tonton Video
                             </a>
                             <?php endif; ?>
@@ -138,12 +138,12 @@ try {
                     ?>
                     <div>
                         <h4 class="text-lg font-semibold text-gray-900 mb-3">
-                            <i class="fas fa-cogs text-blue-600 mr-2"></i>Fitur Utama
+                            <i class="fas fa-cogs text-green-600 mr-2"></i>Fitur Utama
                         </h4>
                         <ul class="space-y-2">
                             <?php foreach ($features as $feature): ?>
                             <li class="flex items-start">
-                                <i class="fas fa-star text-blue-500 mt-1 mr-3 flex-shrink-0"></i>
+                                <i class="fas fa-star text-green-500 mt-1 mr-3 flex-shrink-0"></i>
                                 <span class="text-gray-700"><?= htmlspecialchars($feature) ?></span>
                             </li>
                             <?php endforeach; ?>
@@ -153,13 +153,13 @@ try {
                 </div>
                 
                 <!-- Anti-Corruption Integration Message -->
-                <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div class="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
                     <div class="flex items-start">
-                        <i class="fas fa-shield-alt text-blue-600 mt-1 mr-3"></i>
+                        <i class="fas fa-shield-alt text-green-600 mt-1 mr-3"></i>
                         <div>
-                            <h5 class="font-semibold text-blue-900 mb-1">Komitmen Pendidikan Berintegritas</h5>
-                            <p class="text-blue-800 text-sm">
-                                Inovasi ini merupakan bagian dari upaya SD Integra IV dalam menciptakan lingkungan 
+                            <h5 class="font-semibold text-green-900 mb-1">Komitmen Pendidikan Berintegritas</h5>
+                            <p class="text-green-800 text-sm">
+                                Inovasi ini merupakan bagian dari upaya SDIP Tunas Bangsa dalam menciptakan lingkungan 
                                 pembelajaran yang transparan, akuntabel, dan mendukung pembentukan karakter siswa yang berintegritas.
                             </p>
                         </div>
@@ -181,7 +181,7 @@ try {
                         <?php endif; ?>
                         <div>
                             <span class="font-medium">Status:</span><br>
-                            <?= $innovationData['is_active'] ? 'Aktif' : 'Nonaktif' ?> • 
+                            <?= $innovationData['is_active'] ? 'Aktif' : 'Nonaktif' ?> â€¢ 
                             <?= $innovationData['is_featured'] ? 'Unggulan' : 'Biasa' ?>
                         </div>
                     </div>

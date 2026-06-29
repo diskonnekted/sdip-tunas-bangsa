@@ -93,7 +93,7 @@
             <i class="fas fa-flask text-purple-600 mr-2"></i>Perubahan Apa Ini?
         </div>
         <div class="flex items-center space-x-4">
-            <div class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full font-bold">
+            <div class="bg-green-100 text-green-800 px-4 py-1 rounded-full font-bold">
                 Skor: <span id="score">0</span>
             </div>
             <button onclick="restartGame()" class="text-gray-500 hover:text-gray-800">
@@ -107,11 +107,11 @@
         
         <!-- Left Drop Zone: Fisika -->
         <div id="zone-physics" class="w-1/3 h-full flex flex-col items-center justify-center border-r-4 border-dashed border-transparent transition-all duration-300 zone-physics group">
-            <div class="text-6xl text-blue-500 mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+            <div class="text-6xl text-green-500 mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
                 <i class="fas fa-snowflake"></i>
             </div>
-            <h2 class="text-2xl font-bold text-blue-700 text-center">Perubahan<br>FISIKA</h2>
-            <p class="text-sm text-blue-600/70 text-center mt-2 px-4">Zat tetap sama,<br>hanya wujud berubah</p>
+            <h2 class="text-2xl font-bold text-green-700 text-center">Perubahan<br>FISIKA</h2>
+            <p class="text-sm text-green-600/70 text-center mt-2 px-4">Zat tetap sama,<br>hanya wujud berubah</p>
         </div>
 
         <!-- Center: Card Stack Area -->
@@ -165,7 +165,7 @@
                 type: "physics",
                 icon: "fa-ice-cream",
                 animClass: "anim-melt",
-                color: "text-blue-400",
+                color: "text-green-400",
                 explanation: "Es mencair hanya perubahan wujud dari padat ke cair. Airnya tetap air (H2O)!"
             },
             {
@@ -210,7 +210,7 @@
                 type: "physics",
                 icon: "fa-cube",
                 animClass: "anim-melt",
-                color: "text-white bg-blue-300 rounded p-2",
+                color: "text-white bg-green-300 rounded p-2",
                 explanation: "Gula hanya terlarut dalam air, rasanya tetap manis. Bisa dipisahkan lagi!"
             }
         ];
@@ -373,13 +373,13 @@
             const zoneChemistry = document.getElementById('zone-chemistry');
             
             if (deltaX < -50) {
-                zonePhysics.classList.add('bg-blue-100', 'border-blue-400');
+                zonePhysics.classList.add('bg-green-100', 'border-green-400');
                 zoneChemistry.classList.remove('bg-red-100', 'border-red-400');
             } else if (deltaX > 50) {
                 zoneChemistry.classList.add('bg-red-100', 'border-red-400');
-                zonePhysics.classList.remove('bg-blue-100', 'border-blue-400');
+                zonePhysics.classList.remove('bg-green-100', 'border-green-400');
             } else {
-                zonePhysics.classList.remove('bg-blue-100', 'border-blue-400');
+                zonePhysics.classList.remove('bg-green-100', 'border-green-400');
                 zoneChemistry.classList.remove('bg-red-100', 'border-red-400');
             }
         }
@@ -400,7 +400,7 @@
             const threshold = 100; // Drag threshold
 
             // Reset Zones
-            document.getElementById('zone-physics').classList.remove('bg-blue-100', 'border-blue-400');
+            document.getElementById('zone-physics').classList.remove('bg-green-100', 'border-green-400');
             document.getElementById('zone-chemistry').classList.remove('bg-red-100', 'border-red-400');
 
             if (deltaX < -threshold) {

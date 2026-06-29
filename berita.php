@@ -14,12 +14,12 @@ include 'includes/header.php';
 ?>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 pt-32 pb-20 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-green-600 via-purple-600 to-green-800 pt-32 pb-20 overflow-hidden">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="absolute inset-0">
             <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
             <div class="absolute top-40 right-20 w-32 h-32 bg-purple-300/20 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-blue-300/20 rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-green-300/20 rounded-full blur-xl"></div>
         </div>
         
         <div class="relative container text-center text-white z-10">
@@ -78,27 +78,27 @@ include 'includes/header.php';
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
                         <div class="md:col-span-6">
                             <label class="block text-sm font-semibold text-gray-700 mb-3">
-                                <i class="fas fa-search mr-2 text-blue-500"></i>Kata Kunci
+                                <i class="fas fa-search mr-2 text-green-500"></i>Kata Kunci
                             </label>
                             <input type="text" id="searchInput" 
                                    placeholder="Masukkan kata kunci berita..." 
-                                   class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg">
+                                   class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all text-lg">
                         </div>
                         <div class="md:col-span-3">
                             <label class="block text-sm font-semibold text-gray-700 mb-3">
                                 <i class="fas fa-tags mr-2 text-green-500"></i>Kategori
                             </label>
-                            <select id="categoryFilter" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg">
-                                <option value="">🌟 Semua Kategori</option>
-                                <option value="umum">📰 Umum</option>
-                                <option value="prestasi">🏆 Prestasi</option>
-                                <option value="kegiatan">🎯 Kegiatan</option>
-                                <option value="pengumuman">📢 Pengumuman</option>
+                            <select id="categoryFilter" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all text-lg">
+                                <option value="">Semua Kategori</option>
+                                <option value="umum">Umum</option>
+                                <option value="prestasi">Prestasi</option>
+                                <option value="kegiatan">Kegiatan</option>
+                                <option value="pengumuman">Pengumuman</option>
                             </select>
                         </div>
                         <div class="md:col-span-3">
                             <button onclick="filterNews()" 
-                                    class="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                                    class="w-full px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                                 <i class="fas fa-search mr-2"></i>Cari Berita
                             </button>
                         </div>
@@ -114,8 +114,8 @@ include 'includes/header.php';
             <!-- Loading State -->
             <div id="loading" class="text-center py-20">
                 <div class="relative inline-block">
-                    <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-blue-500 border-opacity-25"></div>
-                    <div class="animate-ping absolute top-0 left-0 h-20 w-20 rounded-full bg-blue-400 opacity-20"></div>
+                    <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-green-500 border-opacity-25"></div>
+                    <div class="animate-ping absolute top-0 left-0 h-20 w-20 rounded-full bg-green-400 opacity-20"></div>
                 </div>
                 <h3 class="mt-6 text-xl font-semibold text-gray-900">Memuat Berita</h3>
                 <p class="mt-2 text-gray-600">Sedang mengambil berita terbaru untuk Anda...</p>
@@ -158,7 +158,7 @@ include 'includes/header.php';
                     <div class="mt-6 lg:mt-0 flex items-center space-x-4">
                         <span class="text-sm font-medium text-gray-700">Tampilan:</span>
                         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-1">
-                            <button id="gridViewBtn" onclick="setViewMode('grid')" class="p-3 rounded-lg bg-blue-100 text-blue-600 transition-all" title="Grid View">
+                            <button id="gridViewBtn" onclick="setViewMode('grid')" class="p-3 rounded-lg bg-green-100 text-green-600 transition-all" title="Grid View">
                                 <i class="fas fa-th-large text-lg"></i>
                             </button>
                             <button id="listViewBtn" onclick="setViewMode('list')" class="p-3 rounded-lg text-gray-400 hover:text-gray-600 transition-all" title="List View">
@@ -184,7 +184,7 @@ include 'includes/header.php';
                     <h3 class="text-3xl font-bold text-gray-900 mb-4">Tidak Ada Berita</h3>
                     <p class="text-gray-600 text-lg mb-8">Maaf, tidak ada berita yang sesuai dengan pencarian Anda.</p>
                     <button onclick="clearFilters()" 
-                            class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105">
+                            class="px-8 py-4 bg-gradient-to-r from-green-500 to-purple-600 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105">
                         <i class="fas fa-refresh mr-2"></i>Reset Pencarian
                     </button>
                 </div>
@@ -283,7 +283,7 @@ include 'includes/header.php';
                     <div class="relative h-80 overflow-hidden">
                         ${item.featured_image ? 
                             `<img src="${item.featured_image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">` : 
-                            `<div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                            `<div class="w-full h-full bg-gradient-to-br from-green-500 to-purple-600 flex items-center justify-center">
                                 <i class="fas fa-newspaper text-white text-6xl opacity-80"></i>
                             </div>`
                         }
@@ -402,7 +402,7 @@ include 'includes/header.php';
                     </div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors line-clamp-2">
                         ${item.title}
                     </h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">${item.excerpt}</p>
@@ -440,12 +440,12 @@ include 'includes/header.php';
                             </span>
                             <span class="ml-4 text-sm text-gray-500">${item.formatted_date}</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4 hover:text-blue-600 transition-colors">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 hover:text-green-600 transition-colors">
                             ${item.title}
                         </h3>
                         <p class="text-gray-600 leading-relaxed mb-6">${item.excerpt}</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                            <span class="text-green-600 font-semibold hover:text-green-700 transition-colors">
                                 Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
                             </span>
                             <span class="flex items-center text-sm text-gray-500">
@@ -461,19 +461,19 @@ include 'includes/header.php';
     // Helper functions for categories
     function getCategoryIcon(category) {
         const icons = {
-            'umum': '📰',
-            'prestasi': '🏆',
-            'kegiatan': '🎯',
-            'pengumuman': '📢'
+            'umum': '<i class="fas fa-newspaper"></i>',
+            'prestasi': '<i class="fas fa-trophy"></i>',
+            'kegiatan': '<i class="fas fa-bullseye"></i>',
+            'pengumuman': '<i class="fas fa-bullhorn"></i>'
         };
-        return icons[category] || '📰';
+        return icons[category] || '<i class="fas fa-newspaper"></i>';
     }
 
     function getCategoryColor(category) {
         const colors = {
             'umum': 'bg-gray-100 text-gray-800',
             'prestasi': 'bg-green-100 text-green-800',
-            'kegiatan': 'bg-blue-100 text-blue-800',
+            'kegiatan': 'bg-green-100 text-green-800',
             'pengumuman': 'bg-red-100 text-red-800'
         };
         return colors[category] || 'bg-gray-100 text-gray-800';
@@ -483,7 +483,7 @@ include 'includes/header.php';
         const gradients = {
             'umum': 'from-gray-500 to-gray-700',
             'prestasi': 'from-green-500 to-emerald-600',
-            'kegiatan': 'from-blue-500 to-indigo-600',
+            'kegiatan': 'from-green-500 to-green-600',
             'pengumuman': 'from-red-500 to-pink-600'
         };
         return gradients[category] || 'from-gray-500 to-gray-700';
@@ -497,11 +497,11 @@ include 'includes/header.php';
         const listBtn = document.getElementById('listViewBtn');
         
         if (mode === 'grid') {
-            gridBtn.className = 'p-3 rounded-lg bg-blue-100 text-blue-600 transition-all';
+            gridBtn.className = 'p-3 rounded-lg bg-green-100 text-green-600 transition-all';
             listBtn.className = 'p-3 rounded-lg text-gray-400 hover:text-gray-600 transition-all';
         } else {
             gridBtn.className = 'p-3 rounded-lg text-gray-400 hover:text-gray-600 transition-all';
-            listBtn.className = 'p-3 rounded-lg bg-blue-100 text-blue-600 transition-all';
+            listBtn.className = 'p-3 rounded-lg bg-green-100 text-green-600 transition-all';
         }
         
         // Re-render current news with new view mode
@@ -525,7 +525,7 @@ include 'includes/header.php';
         // Previous button
         if (pagination.current_page > 1) {
             paginationHTML += `<button onclick="changePage(${pagination.current_page - 1})" 
-                               class="px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all rounded-l-xl">
+                               class="px-4 py-3 text-gray-600 hover:text-green-600 hover:bg-green-50 transition-all rounded-l-xl">
                                <i class="fas fa-chevron-left"></i>
                                </button>`;
         }
@@ -538,15 +538,15 @@ include 'includes/header.php';
             const isActive = i === pagination.current_page;
             paginationHTML += `<button onclick="changePage(${i})" 
                                class="px-4 py-3 ${isActive ? 
-                                   'bg-blue-600 text-white' : 
-                                   'text-gray-600 hover:text-blue-600 hover:bg-blue-50'} 
+                                   'bg-green-600 text-white' : 
+                                   'text-gray-600 hover:text-green-600 hover:bg-green-50'} 
                                transition-all font-semibold">${i}</button>`;
         }
         
         // Next button
         if (pagination.current_page < pagination.total_pages) {
             paginationHTML += `<button onclick="changePage(${pagination.current_page + 1})" 
-                               class="px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all rounded-r-xl">
+                               class="px-4 py-3 text-gray-600 hover:text-green-600 hover:bg-green-50 transition-all rounded-r-xl">
                                <i class="fas fa-chevron-right"></i>
                                </button>`;
         }
@@ -633,7 +633,7 @@ include 'includes/header.php';
                 <span>Diterbitkan oleh <strong>${news.author_name || 'Admin'}</strong></span>
                 <div class="flex items-center space-x-4">
                     <button onclick="shareNews('${news.title}', '${window.location.origin}/berita.php')" 
-                            class="text-blue-600 hover:text-blue-700">
+                            class="text-green-600 hover:text-green-700">
                         <i class="fas fa-share mr-1"></i>Bagikan
                     </button>
                 </div>

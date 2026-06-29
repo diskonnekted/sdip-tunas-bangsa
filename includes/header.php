@@ -6,7 +6,7 @@ if (!class_exists('Settings')) {
 
 // Get school info
     $school_info = getSchoolInfo();
-    $page_title = $page_title ?? 'SD Integra IV';
+    $page_title = $page_title ?? 'SDIP Tunas Bangsa';
 
     // Current page logic
     $current_page = basename($_SERVER['PHP_SELF']);
@@ -80,12 +80,12 @@ if (!class_exists('Settings')) {
                     },
                     colors: {
                         'primary': {
-                            50: '#eef2ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            800: '#3730a3',
-                            900: '#312e81'
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d'
                         },
                         'accent': {
                             500: '#06d6a0',
@@ -146,15 +146,10 @@ if (!class_exists('Settings')) {
                         <a href="berita.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('berita.php', $current_page); ?> transition-all duration-300">Berita</a>
                         <a href="academic.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('academic.php', $current_page); ?> transition-all duration-300">Akademik</a>
                         <a href="interaktif.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('interaktif.php', $current_page); ?> transition-all duration-300">Interactive</a>
-                        <div class="relative group">
-                            <a href="info.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass(['info.php', 'transparansi.php'], $current_page); ?> transition-all duration-300 flex items-center">Info <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
-                            <div class="absolute top-full left-0 mt-2 w-48 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                <a href="info.php" class="block px-4 py-3 text-sm font-medium <?php echo ($current_page == 'info.php') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'; ?> rounded-t-2xl transition-all duration-300"><i class="fas fa-info-circle mr-2"></i>Informasi Umum</a>
-                                <a href="transparansi.php" class="block px-4 py-3 text-sm font-medium <?php echo ($current_page == 'transparansi.php') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'; ?> rounded-b-2xl transition-all duration-300"><i class="fas fa-balance-scale mr-2"></i>Transparansi</a>
-                            </div>
-                        </div>
+                        <a href="info.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('info.php', $current_page); ?> transition-all duration-300">Info</a>
                         <a href="inovasi.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('inovasi.php', $current_page); ?> transition-all duration-300">Inovasi</a>
                         <a href="contact.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('contact.php', $current_page); ?> transition-all duration-300">Kontak</a>
+                        <a href="parent/login.php" class="nav-link px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-red-600 to-red-800 text-white hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-lg shadow-red-500/30">7KAIH</a>
                         <a href="ppdb.php" class="nav-link px-4 py-2 rounded-full text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-primary-500/30">PPDB Online</a>
                     </div>
 
@@ -186,11 +181,11 @@ if (!class_exists('Settings')) {
                     <a href="berita.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('berita.php', $current_page); ?>">Berita</a>
                     <a href="academic.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('academic.php', $current_page); ?>">Akademik</a>
                     <a href="interaktif.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('interaktif.php', $current_page); ?>">Interactive</a>
-                    <a href="info.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('info.php', $current_page); ?>">Informasi Umum</a>
-                    <a href="transparansi.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('transparansi.php', $current_page); ?>">Transparansi</a>
+                    <a href="info.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('info.php', $current_page); ?>">Info</a>
                     <a href="inovasi.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('inovasi.php', $current_page); ?>">Inovasi</a>
                     <a href="contact.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('contact.php', $current_page); ?>">Kontak</a>
-                    <a href="ppdb.php" class="block px-4 py-3 rounded-2xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700">PPDB Online</a>
+                    <a href="parent/login.php" class="block px-4 py-3 rounded-2xl text-sm font-bold bg-gradient-to-r from-red-600 to-red-800 text-white text-center shadow-md">Portal Wali 7KAIH</a>
+                    <a href="ppdb.php" class="block px-4 py-3 rounded-2xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 text-center shadow-md">PPDB Online</a>
                 </div>
             </div>
         </div>

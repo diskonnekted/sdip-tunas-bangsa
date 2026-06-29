@@ -56,13 +56,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+$logo_db = new Database();
+$logo_conn = $logo_db->getConnection();
+$logo_stmt = $logo_conn->prepare("SELECT school_logo FROM school_settings LIMIT 1");
+$logo_stmt->execute();
+$admin_logo = $logo_stmt->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - SD Integra IV</title>
+    <title>Login Admin - SDIP Tunas Bangsa</title>
     <?php include '../includes/favicon.php'; ?>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -72,15 +77,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
-<body class="bg-gradient-custom min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+<body class="bg-gradient-custom min-h-screen flex items-center justify-center p-4" style="background: url('../images/hero.jpg') center/cover no-repeat; position: relative;">
+    <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.6);"></div>
+    <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 w-full max-w-md relative z-10">
         <!-- Logo dan Header -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-4">
-                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 overflow-hidden bg-white shadow-md border-4 border-white">
+                <?php if ($admin_logo): ?>
+                    <img src="uploads/<?= htmlspecialchars($admin_logo) ?>" alt="Logo SDIP" class="w-full h-full object-contain p-2">
+                <?php else: ?>
+                    <div class="w-full h-full bg-gradient-to-r from-green-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                    </div>
+                <?php endif; ?>
             </div>
             <h1 class="text-2xl font-bold text-gray-800 mb-2">Admin Dashboard</h1>
-            <p class="text-gray-600">SD Integra IV</p>
+            <p class="text-gray-600">SDIP Tunas Bangsa</p>
         </div>
 
         <!-- Alert Error -->
@@ -102,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     id="username" 
                     name="username" 
                     required
-                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="Masukkan username atau email"
                     value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
                 >
@@ -118,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         id="password" 
                         name="password" 
                         required
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent pr-10"
                         placeholder="Masukkan password"
                     >
                     <button 
@@ -133,41 +145,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="flex items-center justify-between">
                 <label class="flex items-center">
-                    <input type="checkbox" name="remember" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                    <input type="checkbox" name="remember" class="rounded border-gray-300 text-green-600 shadow-sm focus:ring-green-500">
                     <span class="ml-2 text-sm text-gray-600">Ingat saya</span>
                 </label>
-                <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Lupa password?</a>
+                <a href="#" class="text-sm text-green-600 hover:text-green-800">Lupa password?</a>
             </div>
 
             <button 
                 type="submit" 
-                class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+                class="w-full bg-gradient-to-r from-green-500 to-purple-600 text-white py-2 px-4 rounded-lg hover:from-green-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200"
             >
                 <i class="fas fa-sign-in-alt mr-2"></i>Masuk
             </button>
         </form>
 
-        <!-- Info Default Login -->
-        <div class="mt-8 p-4 bg-blue-50 rounded-lg">
-            <h3 class="text-sm font-medium text-blue-800 mb-2">
-                <i class="fas fa-info-circle mr-2"></i>Info Login Default:
-            </h3>
-            <div class="text-xs text-blue-700 space-y-2">
-                <div class="border-b border-blue-200 pb-1">
-                    <p><strong>Admin:</strong> admin / admin123</p>
-                </div>
-                <div class="border-b border-blue-200 pb-1">
-                    <p><strong>Guru:</strong> guru1 / guru123</p>
-                </div>
-                <div>
-                    <p><strong>Demo (Read-only):</strong> demo / demo123</p>
-                </div>
-            </div>
-        </div>
 
         <!-- Footer -->
         <div class="text-center mt-6 text-xs text-gray-500">
-            © 2024 SD Integra IV. All rights reserved.
+            Â© 2024 SDIP Tunas Bangsa. All rights reserved.
         </div>
     </div>
 

@@ -60,7 +60,7 @@ try {
                             <h4 class="text-xl font-semibold text-gray-900"><?= htmlspecialchars($info['title']) ?></h4>
                         </div>
                         <div class="flex items-center space-x-4 mt-2">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                 <?= $generalInfo->getTypeName($info['type']) ?>
                             </span>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <?= $generalInfo->getPriorityBadgeClass($info['priority']) ?>">
@@ -106,13 +106,13 @@ try {
                         <h5 class="font-medium text-gray-900 mb-2">Lampiran:</h5>
                         <div class="space-y-2">
                             <div class="flex items-center space-x-2">
-                                <i class="fas fa-paperclip text-blue-600"></i>
+                                <i class="fas fa-paperclip text-green-600"></i>
                                 <span class="text-sm text-gray-700"><?= htmlspecialchars($info['attachment']) ?></span>
                             </div>
                             <div>
                                 <a href="uploads/attachments/<?= htmlspecialchars($info['attachment']) ?>" 
                                    target="_blank" 
-                                   class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                   class="inline-flex items-center text-sm text-green-600 hover:text-green-800">
                                     <i class="fas fa-download mr-1"></i>
                                     Download Lampiran
                                 </a>

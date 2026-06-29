@@ -33,7 +33,7 @@ $page_title = "Profil - " . $school_info['name'];
             <div class="about-grid">
                 <div class="about-image">
                     <div class="school-image bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                        <img src="images/sch3.jpg" alt="Gedung <?php echo htmlspecialchars($school_info['name']); ?>" class="school-building">
+                        <img src="images/hero.jpg" alt="Gedung <?php echo htmlspecialchars($school_info['name']); ?>" class="school-building">
                         <div class="image-overlay">
                             <h4>Gedung <?php echo htmlspecialchars($school_info['name']); ?></h4>
                             <p>Fasilitas Modern & Nyaman</p>
@@ -82,11 +82,11 @@ $page_title = "Profil - " . $school_info['name'];
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Misi</h3>
                     <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i><span>Menyelenggarakan pendidikan berkualitas dengan standar nasional dan internasional</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i><span>Mengembangkan karakter siswa berdasarkan nilai-nilai Pancasila</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i><span>Menerapkan teknologi pembelajaran terkini</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i><span>Menciptakan lingkungan belajar yang aman, nyaman, dan inspiratif</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-3"></i><span>Membangun kemitraan dengan orang tua dan masyarakat</span></li>
+                        <li class="flex items-start"><i class="fas fa-star text-yellow-400 mt-1 mr-3"></i><span>Menyelenggarakan pendidikan berkualitas dengan standar nasional dan internasional</span></li>
+                        <li class="flex items-start"><i class="fas fa-star text-yellow-400 mt-1 mr-3"></i><span>Mengembangkan karakter siswa berdasarkan nilai-nilai Pancasila</span></li>
+                        <li class="flex items-start"><i class="fas fa-star text-yellow-400 mt-1 mr-3"></i><span>Menerapkan teknologi pembelajaran terkini</span></li>
+                        <li class="flex items-start"><i class="fas fa-star text-yellow-400 mt-1 mr-3"></i><span>Menciptakan lingkungan belajar yang aman, nyaman, dan inspiratif</span></li>
+                        <li class="flex items-start"><i class="fas fa-star text-yellow-400 mt-1 mr-3"></i><span>Membangun kemitraan dengan orang tua dan masyarakat</span></li>
                     </ul>
                 </div>
             </div>
@@ -148,7 +148,7 @@ $page_title = "Profil - " . $school_info['name'];
             <div class="facilities-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="facility-image-container aspect-video overflow-hidden relative">
-                        <img src="images/sd1.jpg" alt="Smart Classroom" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/belajar.jpg" alt="Smart Classroom" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="facility-content p-6">
@@ -159,7 +159,7 @@ $page_title = "Profil - " . $school_info['name'];
                 
                 <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="facility-image-container aspect-video overflow-hidden relative">
-                        <img src="images/sd2.jpg" alt="Perpustakaan Modern" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/bersama guru.jpg" alt="Perpustakaan Modern" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="facility-content p-6">
@@ -170,7 +170,7 @@ $page_title = "Profil - " . $school_info['name'];
                 
                 <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="facility-image-container aspect-video overflow-hidden relative">
-                        <img src="images/sd3.jpg" alt="Laboratorium Sains" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/mengaji.jpg" alt="Laboratorium Sains" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="facility-content p-6">
@@ -181,7 +181,7 @@ $page_title = "Profil - " . $school_info['name'];
                 
                 <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="facility-image-container aspect-video overflow-hidden relative">
-                        <img src="images/sd4.jpg" alt="Lapangan Olahraga" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/latihan sepak bola.jpg" alt="Lapangan Olahraga" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="facility-content p-6">
@@ -192,7 +192,7 @@ $page_title = "Profil - " . $school_info['name'];
                 
                 <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="facility-image-container aspect-video overflow-hidden relative">
-                        <img src="images/sd5.jpg" alt="Ruang Seni" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/latihan seni siswa.jpg" alt="Ruang Seni" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="facility-content p-6">
@@ -203,7 +203,7 @@ $page_title = "Profil - " . $school_info['name'];
                 
                 <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="facility-image-container aspect-video overflow-hidden relative">
-                        <img src="images/sd6.jpg" alt="Ruang Musik" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/panggung acara.jpg" alt="Ruang Musik" class="facility-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="facility-content p-6">

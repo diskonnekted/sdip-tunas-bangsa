@@ -73,7 +73,7 @@ if (empty($teachers)) {
     <div class="container">
         <div class="page-header-content">
             <h1>Profil Guru</h1>
-            <p>Daftar guru SD Integra IV beserta mata pelajaran yang diajarkan</p>
+            <p>Daftar guru SDIP Tunas Bangsa beserta mata pelajaran yang diajarkan</p>
             <nav class="breadcrumb">
                 <a href="index.php">Beranda</a>
                 <span>/</span>
@@ -108,7 +108,7 @@ if (empty($teachers)) {
                         <div class="w-20 h-1.5 bg-primary-500 rounded-full"></div>
                     </div>
                     <blockquote class="text-gray-600 text-lg leading-relaxed italic mb-6">
-                        "Pendidikan adalah tiket ke masa depan. Hari esok dimiliki oleh orang-orang yang mempersiapkan dirinya pada hari ini. Di SD Integra IV, kami berkomitmen untuk memberikan bekal terbaik bagi putra-putri Anda."
+                        "Pendidikan adalah tiket ke masa depan. Hari esok dimiliki oleh orang-orang yang mempersiapkan dirinya pada hari ini. Di SDIP Tunas Bangsa, kami berkomitmen untuk memberikan bekal terbaik bagi putra-putri Anda."
                     </blockquote>
                     <div class="flex items-center space-x-4">
                         <a href="#contact-teacher" class="px-6 py-2.5 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/30">

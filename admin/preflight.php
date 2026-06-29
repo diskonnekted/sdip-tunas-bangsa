@@ -112,7 +112,7 @@ function badgeText($status)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preflight Check - Admin SD Integra IV</title>
+    <title>Preflight Check - Admin SDIP Tunas Bangsa</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-100 min-h-screen flex items-center justify-center py-10">

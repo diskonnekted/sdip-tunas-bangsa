@@ -63,15 +63,15 @@ class PpdbRegistration {
             $reg_num = 'REG-' . date('Ymd') . '-' . strtoupper(substr(uniqid(), -4));
             
             // Sanitize and bind
-            $stmt->bindParam(':reg_num', $reg_num);
-            $stmt->bindParam(':child_name', htmlspecialchars(strip_tags($data['child_name'])));
-            $stmt->bindParam(':dob', $data['dob']);
-            $stmt->bindParam(':gender', $data['gender']);
-            $stmt->bindParam(':prev_school', htmlspecialchars(strip_tags($data['previous_school'])));
-            $stmt->bindParam(':parent_name', htmlspecialchars(strip_tags($data['parent_name'])));
-            $stmt->bindParam(':phone', htmlspecialchars(strip_tags($data['parent_phone'])));
-            $stmt->bindParam(':email', filter_var($data['email'], FILTER_SANITIZE_EMAIL));
-            $stmt->bindParam(':address', htmlspecialchars(strip_tags($data['address'])));
+            $stmt->bindValue(':reg_num', $reg_num);
+            $stmt->bindValue(':child_name', htmlspecialchars(strip_tags($data['child_name'])));
+            $stmt->bindValue(':dob', $data['dob']);
+            $stmt->bindValue(':gender', $data['gender']);
+            $stmt->bindValue(':prev_school', htmlspecialchars(strip_tags($data['previous_school'])));
+            $stmt->bindValue(':parent_name', htmlspecialchars(strip_tags($data['parent_name'])));
+            $stmt->bindValue(':phone', htmlspecialchars(strip_tags($data['parent_phone'])));
+            $stmt->bindValue(':email', filter_var($data['email'], FILTER_SANITIZE_EMAIL));
+            $stmt->bindValue(':address', htmlspecialchars(strip_tags($data['address'])));
 
             if ($stmt->execute()) {
                 return [

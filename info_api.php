@@ -43,7 +43,7 @@ try {
                         <div style="flex: 1;">
                             <h3 style="color: var(--primary-color); margin: 0 0 5px 0; font-size: 1.3rem;"><?= htmlspecialchars($info['title']) ?></h3>
                             <div style="display: flex; align-items: center; gap: 15px;">
-                                <span style="display: inline-flex; align-items: center; padding: 4px 12px; background: #e0f2fe; color: #0277bd; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">
+                                <span style="display: inline-flex; align-items: center; padding: 4px 12px; background: #dcfce7; color: #0277bd; border-radius: 12px; font-size: 0.8rem; font-weight: 500;">
                                     <?= $generalInfo->getTypeName($info['type']) ?>
                                 </span>
                                 <span style="display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 500; <?= $generalInfo->getPriorityBadgeClass($info['priority']) ?>">
@@ -137,15 +137,15 @@ try {
                 </div>
 
                 <!-- Anti-Corruption Message -->
-                <div style="background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); padding: 15px; border-radius: 10px; border: 1px solid #0ea5e9; margin-top: 20px;">
+                <div style="background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%); padding: 15px; border-radius: 10px; border: 1px solid #22c55e; margin-top: 20px;">
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 35px; height: 35px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-shield-alt" style="color: white; font-size: 1rem;"></i>
                         </div>
                         <div style="flex: 1;">
-                            <h5 style="margin: 0 0 5px 0; color: #0c4a6e; font-size: 0.9rem; font-weight: 600;">Komitmen Transparansi</h5>
-                            <p style="margin: 0; font-size: 0.8rem; color: #0369a1; line-height: 1.4;">
-                                Informasi ini dipublikasikan sebagai bagian dari komitmen SD Integra IV dalam mewujudkan transparansi, akuntabilitas, dan nilai-nilai integritas dalam pendidikan.
+                            <h5 style="margin: 0 0 5px 0; color: #14532d; font-size: 0.9rem; font-weight: 600;">Komitmen Transparansi</h5>
+                            <p style="margin: 0; font-size: 0.8rem; color: #15803d; line-height: 1.4;">
+                                Informasi ini dipublikasikan sebagai bagian dari komitmen SDIP Tunas Bangsa dalam mewujudkan transparansi, akuntabilitas, dan nilai-nilai integritas dalam pendidikan.
                             </p>
                         </div>
                     </div>
