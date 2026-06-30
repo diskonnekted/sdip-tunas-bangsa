@@ -411,6 +411,9 @@ include 'includes/header.php';
                             <i class="fas fa-calendar mr-1"></i>${item.formatted_date}
                         </span>
                         <span class="flex items-center">
+                            <i class="fas fa-user mr-1"></i>${item.author_name}
+                        </span>
+                        <span class="flex items-center">
                             <i class="fas fa-eye mr-1"></i>${item.views?.toLocaleString() || 0}
                         </span>
                     </div>
@@ -438,7 +441,8 @@ include 'includes/header.php';
                             <span class="inline-flex items-center ${getCategoryColor(item.category)} px-3 py-1 rounded-full text-sm font-semibold">
                                 ${getCategoryIcon(item.category)} ${item.category}
                             </span>
-                            <span class="ml-4 text-sm text-gray-500">${item.formatted_date}</span>
+                            <span class="ml-4 text-sm text-gray-500"><i class="fas fa-user mr-1"></i> ${item.author_name}</span>
+                            <span class="ml-4 text-sm text-gray-500"><i class="fas fa-calendar mr-1"></i> ${item.formatted_date}</span>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-4 hover:text-green-600 transition-colors">
                             ${item.title}

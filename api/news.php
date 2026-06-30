@@ -59,7 +59,8 @@ try {
                     'views' => (int)$item['views'],
                     'is_featured' => (bool)$item['is_featured'],
                     'published_at' => $item['published_at'],
-                    'formatted_date' => formatTanggal($item['published_at'] ?: $item['created_at'])
+                    'formatted_date' => formatTanggal($item['published_at'] ?: $item['created_at']),
+                    'author_name' => $item['author_name'] ?? 'Admin'
                 ];
             }
             
@@ -88,7 +89,8 @@ try {
                     'category' => $item['category'],
                     'featured_image' => $item['featured_image'] ? 'admin/uploads/' . $item['featured_image'] : null,
                     'views' => (int)$item['views'],
-                    'formatted_date' => formatTanggal($item['published_at'])
+                    'formatted_date' => formatTanggal($item['published_at']),
+                    'author_name' => $item['author_name'] ?? 'Admin'
                 ];
             }
             
@@ -121,7 +123,8 @@ try {
                     'slug' => $item['slug'],
                     'excerpt' => substr(strip_tags($item['content']), 0, 100) . '...',
                     'featured_image' => $item['featured_image'] ? 'admin/uploads/' . $item['featured_image'] : null,
-                    'formatted_date' => formatTanggal($item['published_at'])
+                    'formatted_date' => formatTanggal($item['published_at']),
+                    'author_name' => $item['author_name'] ?? 'Admin'
                 ];
             }
             
@@ -136,7 +139,8 @@ try {
                     'category' => $newsDetail['category'],
                     'featured_image' => $newsDetail['featured_image'] ? 'admin/uploads/' . $newsDetail['featured_image'] : null,
                     'views' => (int)$newsDetail['views'] + 1,
-                    'formatted_date' => formatTanggal($newsDetail['published_at'] ?: $newsDetail['created_at'])
+                    'formatted_date' => formatTanggal($newsDetail['published_at'] ?: $newsDetail['created_at']),
+                    'author_name' => $newsDetail['author_name'] ?? 'Admin'
                 ],
                 'related' => $formattedRelated
             ];

@@ -85,7 +85,8 @@ class News {
 
     // Get single news by ID
     public function getById($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
+        $query = "SELECT n.*, u.full_name as author_name FROM " . $this->table_name . " n 
+                  LEFT JOIN admin_users u ON n.author_id = u.id WHERE n.id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -93,7 +94,8 @@ class News {
 
     // Get single news by slug
     public function getBySlug($slug) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE slug = ?";
+        $query = "SELECT n.*, u.full_name as author_name FROM " . $this->table_name . " n 
+                  LEFT JOIN admin_users u ON n.author_id = u.id WHERE n.slug = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$slug]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -190,17 +192,18 @@ class News {
         // Ensure limit and offset are integers
         $limit = (int)$limit;
         $offset = (int)$offset;
-        $query = "SELECT * FROM " . $this->table_name . " 
-                  WHERE status = 'published'";
+        $query = "SELECT n.*, u.full_name as author_name FROM " . $this->table_name . " n 
+                  LEFT JOIN admin_users u ON n.author_id = u.id 
+                  WHERE n.status = 'published'";
         
         $params = [];
         
         if (!empty($category)) {
-            $query .= " AND category = ?";
+            $query .= " AND n.category = ?";
             $params[] = $category;
         }
         
-        $query .= " ORDER BY published_at DESC LIMIT $limit OFFSET $offset";
+        $query .= " ORDER BY n.published_at DESC LIMIT $limit OFFSET $offset";
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute($params);
@@ -211,9 +214,10 @@ class News {
     public function getFeatured($limit = 5) {
         // Ensure limit is integer
         $limit = (int)$limit;
-        $query = "SELECT * FROM " . $this->table_name . " 
-                  WHERE status = 'published' AND is_featured = 1
-                  ORDER BY published_at DESC 
+        $query = "SELECT n.*, u.full_name as author_name FROM " . $this->table_name . " n 
+                  LEFT JOIN admin_users u ON n.author_id = u.id 
+                  WHERE n.status = 'published' AND n.is_featured = 1
+                  ORDER BY n.published_at DESC 
                   LIMIT $limit";
         
         $stmt = $this->conn->prepare($query);
@@ -245,11 +249,12 @@ class News {
     public function getRelated($current_id, $category, $limit = 5) {
         // Ensure limit is integer
         $limit = (int)$limit;
-        $query = "SELECT * FROM " . $this->table_name . " 
-                  WHERE status = 'published' 
-                  AND category = ? 
-                  AND id != ?
-                  ORDER BY published_at DESC 
+        $query = "SELECT n.*, u.full_name as author_name FROM " . $this->table_name . " n 
+                  LEFT JOIN admin_users u ON n.author_id = u.id 
+                  WHERE n.status = 'published' 
+                  AND n.category = ? 
+                  AND n.id != ?
+                  ORDER BY n.published_at DESC 
                   LIMIT $limit";
         
         $stmt = $this->conn->prepare($query);
