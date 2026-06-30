@@ -10,7 +10,6 @@ class User {
     const ROLE_ADMIN = 'admin';
     const ROLE_GURU = 'guru';
     const ROLE_STAF = 'staf';
-    const ROLE_DEMO = 'demo';
 
     public function __construct($db) {
         $this->conn = $db;
@@ -310,7 +309,11 @@ class User {
             
             return ['success' => true, 'message' => 'User deleted successfully'];
         } catch(PDOException $e) {
-            return ['success' => false, 'message' => $e->getMessage()];
+            error_log("Error authenticating user: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'Database error'
+            ];
         }
     }
 
@@ -321,8 +324,7 @@ class User {
                     SUM(CASE WHEN role = 'super_admin' THEN 1 ELSE 0 END) as superadmin,
                     SUM(CASE WHEN role = 'admin' THEN 1 ELSE 0 END) as admin,
                     SUM(CASE WHEN role = 'guru' THEN 1 ELSE 0 END) as guru,
-                    SUM(CASE WHEN role = 'staf' THEN 1 ELSE 0 END) as staf,
-                    SUM(CASE WHEN role = 'demo' THEN 1 ELSE 0 END) as demo
+                    SUM(CASE WHEN role = 'staf' THEN 1 ELSE 0 END) as staf
                   FROM " . $this->table_name;
         
         try {
@@ -337,7 +339,7 @@ class User {
                 'admin' => 0,
                 'guru' => 0,
                 'staf' => 0,
-                'demo' => 0
+                'orang_tua' => 0
             ];
         }
     }

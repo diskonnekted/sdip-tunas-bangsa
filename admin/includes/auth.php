@@ -11,8 +11,6 @@ class Auth {
     const ROLE_GURU = 'guru';
     const ROLE_STAF = 'staf';
     const ROLE_ORANG_TUA = 'orang_tua';
-    const ROLE_DEMO = 'demo';
-
     public static function isLoggedIn() {
         return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
     }
@@ -99,8 +97,7 @@ class Auth {
     }
 
     public static function isReadOnly() {
-        $role = self::getUserRole();
-        return $role === self::ROLE_DEMO;
+        return false; // No more demo role
     }
 
     public static function canDeleteContent() {
@@ -149,8 +146,7 @@ class Auth {
             'admin' => '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Admin</span>',
             'guru' => '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Guru</span>',
             'staf' => '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Staf</span>',
-            'orang_tua' => '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Wali Murid</span>',
-            'demo' => '<span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Demo</span>'
+            'orang_tua' => '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Wali Murid</span>'
         ];
 
         return $badges[$role] ?? '<span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Unknown</span>';
@@ -201,18 +197,6 @@ class Auth {
         }
         
         return false;
-    }
-
-    // Block write operations for demo users
-    public static function blockWriteOperations() {
-        if (self::isReadOnly() && !self::isReadOperation()) {
-            header('Content-Type: application/json');
-            echo json_encode([
-                'success' => false,
-                'message' => 'Demo user tidak dapat melakukan perubahan data.'
-            ]);
-            exit;
-        }
     }
 }
 

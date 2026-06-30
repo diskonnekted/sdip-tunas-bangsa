@@ -115,7 +115,7 @@ include 'includes/header.php';
                             Tentang Kami
                             <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
                         </a>
-                        <a href="akademik.php" class="group inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-semibold rounded-2xl hover-lift transition-all duration-300">
+                        <a href="academic.php" class="group inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-semibold rounded-2xl hover-lift transition-all duration-300">
                             <i class="fas fa-book-open mr-3 group-hover:scale-110 transition-transform"></i>
                             Program Akademik
                         </a>

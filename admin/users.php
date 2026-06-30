@@ -15,14 +15,14 @@ $current_user = Auth::getCurrentUser();
 
 // Handle POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    Auth::blockWriteOperations(); // Block demo users
+
     
     $action = $_POST['action'] ?? '';
     
     switch ($action) {
         case 'create':
             $roleIn = isset($_POST['role']) ? strtolower(trim($_POST['role'])) : '';
-            $allowedRoles = ['super_admin','admin','guru','staf','orang_tua','demo'];
+            $allowedRoles = ['super_admin','admin','guru','staf','orang_tua'];
             $cleanRole = in_array($roleIn, $allowedRoles) ? $roleIn : 'guru';
             $result = $userModel->create(
                 $_POST['username'],
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
         case 'update':
             $roleIn = isset($_POST['role']) ? strtolower(trim($_POST['role'])) : '';
-            $allowedRoles = ['super_admin','admin','guru','staf','orang_tua','demo'];
+            $allowedRoles = ['super_admin','admin','guru','staf','orang_tua'];
             $cleanRole = in_array($roleIn, $allowedRoles) ? $roleIn : 'guru';
             $result = $userModel->update(
                 $_POST['user_id'],
@@ -250,15 +250,6 @@ $page_title = 'User Management';
                     <i class="fas fa-chalkboard-teacher text-green-600 text-2xl"></i>
                 </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Demo</p>
-                        <p class="text-2xl font-bold text-gray-600"><?= $stats['demo'] ?? 0 ?></p>
-                    </div>
-                    <i class="fas fa-eye text-gray-600 text-2xl"></i>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -276,7 +267,8 @@ $page_title = 'User Management';
                     <option value="super_admin" <?= $role_filter === 'super_admin' ? 'selected' : '' ?>>Super Admin</option>
                     <option value="admin" <?= $role_filter === 'admin' ? 'selected' : '' ?>>Admin</option>
                     <option value="guru" <?= $role_filter === 'guru' ? 'selected' : '' ?>>Guru</option>
-                    <option value="demo" <?= $role_filter === 'demo' ? 'selected' : '' ?>>Demo</option>
+                    <option value="orang_tua" <?= $role_filter === 'orang_tua' ? 'selected' : '' ?>>Wali Murid</option>
+
                 </select>
             </div>
             <div>
@@ -404,7 +396,7 @@ $page_title = 'User Management';
                     document.getElementById('edit_username').value = user.username || '';
                     document.getElementById('edit_email').value = user.email || '';
                     document.getElementById('edit_full_name').value = user.full_name || '';
-                    document.getElementById('edit_role').value = user.role || 'demo';
+                    document.getElementById('edit_role').value = user.role || 'guru';
                     var st = user.status;
                     if (st !== 'active' && st !== 'inactive' && st !== 'suspended') {
                         st = (user.is_active == 1 ? 'active' : 'suspended');

@@ -71,12 +71,6 @@ $user_stats = $userModel->getStats();
             <div class="flex-1">
                 <h2 class="text-2xl font-bold mb-2">Selamat Datang, <?= htmlspecialchars($current_user['name']) ?>!</h2>
                 <p class="text-white/80">Kelola konten website SDIP Tunas Bangsa dengan mudah melalui dashboard admin ini.</p>
-                <?php if (Auth::isReadOnly()): ?>
-                <div class="mt-3 flex items-center text-yellow-200">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <span class="text-sm">Anda login sebagai Demo User dengan akses Read-Only</span>
-                </div>
-                <?php endif; ?>
             </div>
             <div class="hidden md:block">
                 <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
