@@ -66,6 +66,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
+    if ($action === 'update_kelas') {
+        $id = $_POST['student_id'];
+        $kelas = $_POST['kelas'];
+        $student = $studentModel->getById($id);
+        if ($student) {
+            $student['kelas'] = $kelas;
+            $result = $studentModel->update($id, $student);
+            Auth::setFlashMessage($result['success'] ? 'success' : 'error', $result['message']);
+        }
+        header('Location: students.php');
+        exit;
+    }
+    
     if ($action === 'delete_student') {
         $result = $studentModel->delete($_POST['student_id']);
         Auth::setFlashMessage($result['success'] ? 'success' : 'error', $result['message']);
@@ -171,6 +184,9 @@ $students = $studentModel->getAll($search);
                                     <i class="fas fa-book-open"></i> Jurnal 7KAIH
                                 </a>
                                 <?php if (!Auth::isReadOnly()): ?>
+                                <button onclick="editKelas(<?= $student['id'] ?>, '<?= htmlspecialchars($student['kelas']) ?>')" class="text-green-500 hover:text-green-900 transition-colors bg-green-50 hover:bg-green-100 p-2 rounded-lg" title="Ubah Kelas">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <button onclick="deleteStudent(<?= $student['id'] ?>)" class="text-red-500 hover:text-red-900 transition-colors bg-red-50 hover:bg-red-100 p-2 rounded-lg" title="Hapus Siswa">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
@@ -318,10 +334,17 @@ $students = $studentModel->getAll($search);
     </div>
 </div>
 
-<!-- Delete Form -->
+<!-- Form Delete Siswa -->
 <form id="deleteForm" action="students.php" method="POST" class="hidden">
     <input type="hidden" name="action" value="delete_student">
     <input type="hidden" name="student_id" id="deleteStudentId">
+</form>
+
+<!-- Form Update Kelas -->
+<form id="editKelasForm" action="students.php" method="POST" class="hidden">
+    <input type="hidden" name="action" value="update_kelas">
+    <input type="hidden" name="student_id" id="editKelasId">
+    <input type="hidden" name="kelas" id="editKelasName">
 </form>
 
 <script>
@@ -337,6 +360,15 @@ function deleteStudent(id) {
     if (confirm('Apakah Anda yakin ingin menghapus data siswa ini? Seluruh jurnal harian 7KAIH miliknya juga akan ikut terhapus!')) {
         document.getElementById('deleteStudentId').value = id;
         document.getElementById('deleteForm').submit();
+    }
+}
+
+function editKelas(id, currentKelas) {
+    let newKelas = prompt('Masukkan nama kelas (misal: 1A, 2B):', currentKelas);
+    if (newKelas !== null && newKelas.trim() !== '') {
+        document.getElementById('editKelasId').value = id;
+        document.getElementById('editKelasName').value = newKelas;
+        document.getElementById('editKelasForm').submit();
     }
 }
 </script>
