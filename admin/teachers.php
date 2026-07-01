@@ -15,7 +15,6 @@ $page_title = 'Data Guru & Staf';
 
 // Handle POST actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    Auth::blockWriteOperations();
     
     $action = $_POST['action'] ?? '';
     

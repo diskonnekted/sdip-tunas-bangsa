@@ -17,7 +17,6 @@ $page_title = 'Data Siswa & Wali';
 
 // Handle Actions (Create/Edit/Delete)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    Auth::blockWriteOperations();
     
     $action = $_POST['action'] ?? '';
     
