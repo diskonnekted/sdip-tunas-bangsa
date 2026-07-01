@@ -40,10 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wali_kelas = $_POST['wali_kelas'] ?? '';
             
             // Insert into teacher_profiles
-            $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp, wali_kelas) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp, $wali_kelas]);
-            
-            Auth::setFlashMessage('success', 'Data Guru/Staf berhasil ditambahkan.');
+            try {
+                $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp, wali_kelas) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp, $wali_kelas]);
+                Auth::setFlashMessage('success', 'Data Guru/Staf berhasil ditambahkan.');
+            } catch (PDOException $e) {
+                // To avoid 500 error if column doesn't exist
+                Auth::setFlashMessage('error', 'Database Error: ' . $e->getMessage() . ' - Pastikan Anda sudah menjalankan ALTER TABLE.');
+            }
         } else {
             Auth::setFlashMessage('error', $result['message']);
         }
@@ -80,17 +84,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wali_kelas = $_POST['wali_kelas'] ?? '';
             
             // Check if profile exists
-            $check = $db->prepare("SELECT id FROM teacher_profiles WHERE user_id = ?");
-            $check->execute([$userId]);
-            if ($check->fetch()) {
-                $stmt = $db->prepare("UPDATE teacher_profiles SET subject=?, bio=?, tgl_lahir=?, no_hp=?, wali_kelas=? WHERE user_id=?");
-                $stmt->execute([$subject, $bio, $tgl_lahir, $no_hp, $wali_kelas, $userId]);
-            } else {
-                $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp, wali_kelas) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp, $wali_kelas]);
+            try {
+                $check = $db->prepare("SELECT id FROM teacher_profiles WHERE user_id = ?");
+                $check->execute([$userId]);
+                if ($check->fetch()) {
+                    $stmt = $db->prepare("UPDATE teacher_profiles SET subject=?, bio=?, tgl_lahir=?, no_hp=?, wali_kelas=? WHERE user_id=?");
+                    $stmt->execute([$subject, $bio, $tgl_lahir, $no_hp, $wali_kelas, $userId]);
+                } else {
+                    $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp, wali_kelas) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp, $wali_kelas]);
+                }
+                Auth::setFlashMessage('success', 'Data Guru/Staf berhasil diperbarui.');
+            } catch (PDOException $e) {
+                Auth::setFlashMessage('error', 'Database Error: ' . $e->getMessage() . ' - Pastikan Anda sudah menjalankan ALTER TABLE.');
             }
-            
-            Auth::setFlashMessage('success', 'Data Guru/Staf berhasil diperbarui.');
         } else {
             Auth::setFlashMessage('error', $result['message']);
         }
