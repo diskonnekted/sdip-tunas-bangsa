@@ -50,6 +50,12 @@ function uploadFile($file, $target_dir = 'uploads/', $allowed_types = ['jpg', 'j
         return false;
     }
     
+    // Check file size (max 2MB)
+    if ($file['size'] > 2 * 1024 * 1024) {
+        error_log('Upload error: File exceeds 2MB limit. Size: ' . $file['size']);
+        return false;
+    }
+    
     // Check file extension
     $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     if (!in_array($file_extension, $allowed_types)) {

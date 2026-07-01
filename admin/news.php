@@ -49,16 +49,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Handle file upload
                     $featured_image = '';
                     if (isset($_FILES['featured_image']) && $_FILES['featured_image']['error'] === UPLOAD_ERR_OK) {
-                        error_log('NEWS CREATE: Starting file upload for ' . $_FILES['featured_image']['name']);
-                        error_log('NEWS CREATE: File size: ' . $_FILES['featured_image']['size'] . ' bytes');
-                        error_log('NEWS CREATE: Upload error code: ' . $_FILES['featured_image']['error']);
+                        
+                        if ($_FILES['featured_image']['size'] > 2 * 1024 * 1024) {
+                            Auth::setFlashMessage('error', 'Gagal upload! Ukuran gambar cover melebihi batas 2MB.');
+                            header('Location: news.php?action=create');
+                            exit;
+                        }
                         
                         $featured_image = uploadFile($_FILES['featured_image'], 'uploads/', ['jpg', 'jpeg', 'png', 'gif']);
                         
-                        error_log('NEWS CREATE: uploadFile returned: ' . ($featured_image ? $featured_image : 'FALSE'));
-                        
                         if (!$featured_image) {
-                            $errors[] = 'Gagal upload gambar. Format yang didukung: JPG, JPEG, PNG, GIF';
+                            Auth::setFlashMessage('error', 'Gagal upload gambar cover. Pastikan format file sesuai.');
+                            header('Location: news.php?action=create');
+                            exit;
                         }
                     }
                     
@@ -109,14 +112,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         // Handle file upload
                         error_log('NEWS UPDATE: Checking for file upload. Files array: ' . print_r($_FILES, true));
                         if (isset($_FILES['featured_image']) && $_FILES['featured_image']['error'] === UPLOAD_ERR_OK) {
-                            error_log('NEWS UPDATE: Starting file upload for ' . $_FILES['featured_image']['name']);
-                            error_log('NEWS UPDATE: File size: ' . $_FILES['featured_image']['size'] . ' bytes');
-                            error_log('NEWS UPDATE: Upload error code: ' . $_FILES['featured_image']['error']);
-                            error_log('NEWS UPDATE: Upload temp name: ' . $_FILES['featured_image']['tmp_name']);
+                            
+                            if ($_FILES['featured_image']['size'] > 2 * 1024 * 1024) {
+                                Auth::setFlashMessage('error', 'Gagal upload! Ukuran gambar cover melebihi batas 2MB.');
+                                header('Location: news.php?action=edit&id=' . $id);
+                                exit;
+                            }
                             
                             $new_image = uploadFile($_FILES['featured_image'], 'uploads/', ['jpg', 'jpeg', 'png', 'gif']);
-                            
-                            error_log('NEWS UPDATE: uploadFile returned: ' . ($new_image ? $new_image : 'FALSE'));
                             
                             if ($new_image) {
                                 // Delete old image if exists
@@ -429,10 +432,9 @@ require_once 'includes/admin_header.php';
                 <!-- Content -->
                 <div class="bg-white p-6 rounded-lg shadow">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Konten Berita *</label>
-                    <textarea name="content" required rows="15"
+                    <textarea name="content" id="editor" rows="20"
                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                               placeholder="Tulis konten berita lengkap..."><?= htmlspecialchars($editNews['content'] ?? '') ?></textarea>
-                    <p class="text-sm text-gray-500 mt-2">Gunakan HTML tags untuk formatting (bold, italic, links, dll)</p>
                 </div>
 
                 <!-- Excerpt -->
@@ -521,6 +523,26 @@ require_once 'includes/admin_header.php';
 </div>
 
 <?php endif; ?>
+
+<!-- TinyMCE Script -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+    selector: '#editor',
+    plugins: 'image media link code lists table wordcount',
+    toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table code',
+    images_upload_url: 'upload_image_ajax.php',
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    height: 600,
+    content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; }',
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save(); // ensure textarea is updated before form submit
+        });
+    }
+});
+</script>
 
 <script>
 // Auto-save draft functionality
