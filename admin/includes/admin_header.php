@@ -128,7 +128,7 @@ $page_title = $page_title ?? 'Dashboard';
                         <li>
                             <a href="students.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'students.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
                                 <i class="fas fa-user-graduate mr-3 text-red-500"></i>
-                                Data Siswa (7KAIH)
+                                Data Siswa & Wali
                             </a>
                         </li>
                         <?php endif; ?>
