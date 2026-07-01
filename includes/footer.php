@@ -104,6 +104,7 @@ $social_media = getSocialMedia();
         // Navbar Scroll Effect (Standardized)
         const navbar = document.getElementById('navbar');
         if (navbar) {
+            const navTheme = navbar.getAttribute('data-theme') || 'dark';
             const glassEffect = navbar.querySelector('.glass-effect');
             const navLinks = navbar.querySelectorAll('.nav-link:not(.bg-primary-500)');
             const logoText = navbar.querySelector('h1');
@@ -119,57 +120,61 @@ $social_media = getSocialMedia();
                         glassEffect.classList.add('shadow-md');
                     }
                     
-                    // Change text colors to dark
-                    if (logoText) {
-                        logoText.classList.remove('text-white');
-                        logoText.classList.add('text-gray-800');
-                    }
-                    
-                    if (logoSubtext) {
-                        logoSubtext.classList.remove('text-gray-200');
-                        logoSubtext.classList.add('text-gray-500');
-                    }
-                    
-                    if (mobileMenuBtnIcon) {
-                        mobileMenuBtnIcon.classList.remove('text-white');
-                        mobileMenuBtnIcon.classList.add('text-gray-800');
-                    }
+                    // Change text colors to dark (only if theme was dark)
+                    if (navTheme !== 'light') {
+                        if (logoText) {
+                            logoText.classList.remove('text-white');
+                            logoText.classList.add('text-gray-800');
+                        }
+                        
+                        if (logoSubtext) {
+                            logoSubtext.classList.remove('text-gray-200');
+                            logoSubtext.classList.add('text-gray-500');
+                        }
+                        
+                        if (mobileMenuBtnIcon) {
+                            mobileMenuBtnIcon.classList.remove('text-white');
+                            mobileMenuBtnIcon.classList.add('text-gray-800');
+                        }
 
-                    if (navLinks) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('text-gray-100', 'hover:bg-white/20', 'hover:text-white');
-                            link.classList.add('text-gray-700', 'hover:bg-primary-50', 'hover:text-primary-600');
-                        });
+                        if (navLinks) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('text-gray-100', 'hover:bg-white/20', 'hover:text-white');
+                                link.classList.add('text-gray-700', 'hover:bg-primary-50', 'hover:text-primary-600');
+                            });
+                        }
                     }
                 } else {
                     // Top state
-                    if (glassEffect) {
+                    if (glassEffect && navTheme !== 'light') {
                         glassEffect.style.background = 'rgba(255, 255, 255, 0.1)';
                         glassEffect.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
                         glassEffect.classList.remove('shadow-md');
                     }
                     
-                    // Change text colors back to light
-                    if (logoText) {
-                        logoText.classList.remove('text-gray-800');
-                        logoText.classList.add('text-white');
-                    }
-                    
-                    if (logoSubtext) {
-                        logoSubtext.classList.remove('text-gray-500');
-                        logoSubtext.classList.add('text-gray-200');
-                    }
-                    
-                    if (mobileMenuBtnIcon) {
-                        mobileMenuBtnIcon.classList.remove('text-gray-800');
-                        mobileMenuBtnIcon.classList.add('text-white');
-                    }
+                    // Change text colors back to light (only if theme was dark)
+                    if (navTheme !== 'light') {
+                        if (logoText) {
+                            logoText.classList.remove('text-gray-800');
+                            logoText.classList.add('text-white');
+                        }
+                        
+                        if (logoSubtext) {
+                            logoSubtext.classList.remove('text-gray-500');
+                            logoSubtext.classList.add('text-gray-200');
+                        }
+                        
+                        if (mobileMenuBtnIcon) {
+                            mobileMenuBtnIcon.classList.remove('text-gray-800');
+                            mobileMenuBtnIcon.classList.add('text-white');
+                        }
 
-                    if (navLinks) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('text-gray-700', 'hover:bg-primary-50', 'hover:text-primary-600');
-                            link.classList.add('text-gray-100', 'hover:bg-white/20', 'hover:text-white');
-                        });
+                        if (navLinks) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('text-gray-700', 'hover:bg-primary-50', 'hover:text-primary-600');
+                                link.classList.add('text-gray-100', 'hover:bg-white/20', 'hover:text-white');
+                            });
+                        }
                     }
                 }
             });

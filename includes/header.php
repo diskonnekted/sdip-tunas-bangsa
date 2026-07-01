@@ -109,7 +109,7 @@ if (!class_exists('Settings')) {
 </head>
 <body class="<?php echo isset($body_class) ? $body_class : ''; ?>">
     <!-- Modern Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar" data-theme="<?php echo $nav_theme; ?>">
         <div class="<?php echo $glass_class; ?>">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
