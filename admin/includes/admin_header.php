@@ -133,6 +133,15 @@ $page_title = $page_title ?? 'Dashboard';
                         </li>
                         <?php endif; ?>
 
+                        <?php if (Auth::canManageUsers()): ?>
+                        <li>
+                            <a href="teachers.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'teachers.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
+                                <i class="fas fa-chalkboard-teacher mr-3 text-blue-500"></i>
+                                Data Guru & Staf
+                            </a>
+                        </li>
+                        <?php endif; ?>
+
                         <?php if (Auth::canEditContent()): ?>
                         <li>
                             <a href="info.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'info.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
