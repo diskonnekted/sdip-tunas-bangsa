@@ -23,6 +23,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     if (in_array($status, ['pending', 'approved', 'rejected'])) {
         if ($ppdb->updateStatus($id, $status)) {
             $success_message = "Status pendaftaran berhasil diperbarui.";
+            
+            // Auto sync to Siswa if approved
+            if ($status === 'approved') {
+                require_once 'models/Student.php';
+                require_once 'models/ParentModel.php';
+                $studentModel = new Student($db);
+                $parentModel = new ParentModel($db);
+                
+                // Get PPDB details
+                $reg = $ppdb->getById($id);
+                if ($reg) {
+                    $nisn_temp = 'PPDB-' . $reg['registration_number'];
+                    
+                    // Add to Siswa
+                    $studentData = [
+                        'nis' => null,
+                        'nisn' => $nisn_temp,
+                        'nama_lengkap' => $reg['child_name'],
+                        'jenis_kelamin' => $reg['gender'],
+                        'tanggal_lahir' => $reg['dob'],
+                        'kelas' => 'Siswa Baru'
+                    ];
+                    $sResult = $studentModel->create($studentData);
+                    
+                    if ($sResult['success']) {
+                        $studentId = $sResult['id'];
+                        // Add to Parent
+                        $parentData = [
+                            'nama_ayah' => $reg['parent_name'],
+                            'nama_ibu' => '',
+                            'no_hp_ayah' => $reg['parent_phone'],
+                            'no_hp_ibu' => '',
+                            'alamat_lengkap' => $reg['address'],
+                            'siswa_id' => $studentId,
+                            'status_hubungan' => 'Wali',
+                            'password_default' => $nisn_temp
+                        ];
+                        $pResult = $parentModel->create($parentData);
+                        if ($pResult['success']) {
+                            $success_message .= " Data Siswa & Wali otomatis digenerate.";
+                        } else {
+                            $success_message .= " Siswa disinkron, tapi pembuatan akun Wali gagal.";
+                        }
+                    }
+                }
+            }
+
             // Refresh stats
             $stats = $ppdb->getStats();
         } else {
