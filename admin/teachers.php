@@ -51,6 +51,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
+    if ($action === 'update') {
+        $userId = $_POST['user_id'];
+        $role = $_POST['role'] === 'staf' ? 'staf' : 'guru';
+        $status = isset($_POST['status']) ? intval($_POST['status']) : 1;
+        
+        $result = $userModel->update(
+            $userId,
+            $_POST['username'],
+            $_POST['email'],
+            $_POST['full_name'],
+            $role,
+            $status,
+            $current_user['id']
+        );
+        
+        // Try update password if provided
+        if (!empty($_POST['password'])) {
+            $userModel->updatePassword($userId, $_POST['password'], $current_user['id']);
+        }
+        
+        if ($result['success']) {
+            $subject = $_POST['subject'] ?? '';
+            $bio = $_POST['bio'] ?? '';
+            $tgl_lahir = !empty($_POST['tgl_lahir']) ? $_POST['tgl_lahir'] : null;
+            $no_hp = $_POST['no_hp'] ?? '';
+            
+            // Check if profile exists
+            $check = $db->prepare("SELECT id FROM teacher_profiles WHERE user_id = ?");
+            $check->execute([$userId]);
+            if ($check->fetch()) {
+                $stmt = $db->prepare("UPDATE teacher_profiles SET subject=?, bio=?, tgl_lahir=?, no_hp=? WHERE user_id=?");
+                $stmt->execute([$subject, $bio, $tgl_lahir, $no_hp, $userId]);
+            } else {
+                $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp) VALUES (?, ?, ?, ?, ?)");
+                $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp]);
+            }
+            
+            Auth::setFlashMessage('success', 'Data Guru/Staf berhasil diperbarui.');
+        } else {
+            Auth::setFlashMessage('error', $result['message']);
+        }
+        
+        header('Location: teachers.php');
+        exit;
+    }
+    
     if ($action === 'delete') {
         $userId = $_POST['user_id'];
         
@@ -192,6 +238,9 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex space-x-3">
                                     <?php if (!Auth::isReadOnly()): ?>
+                                    <button onclick='editTeacher(<?= json_encode($t, JSON_HEX_APOS | JSON_HEX_QUOT) ?>)' class="text-green-500 hover:text-green-900 transition-colors bg-green-50 hover:bg-green-100 p-2 rounded-lg" title="Edit Guru/Staf">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
                                     <button onclick="deleteTeacher(<?= $t['id'] ?>)" class="text-red-500 hover:text-red-900 transition-colors bg-red-50 hover:bg-red-100 p-2 rounded-lg" title="Hapus Guru/Staf">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
@@ -311,6 +360,58 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <script>
 function openCreateModal() {
+    // Reset form to Create mode
+    document.querySelector('#createModal form').reset();
+    document.querySelector('#createModal input[name="action"]').value = "create";
+    document.querySelector('#createModal h3').innerHTML = '<i class="fas fa-user-plus mr-2"></i> Tambah Guru/Staf';
+    document.querySelector('#createModal input[name="password"]').required = true;
+    document.querySelector('#createModal input[name="password"]').placeholder = '';
+    let statusContainer = document.getElementById('statusContainer');
+    if (statusContainer) statusContainer.style.display = 'none';
+    
+    document.getElementById('createModal').classList.remove('hidden');
+}
+
+function editTeacher(t) {
+    document.querySelector('#createModal form').reset();
+    document.querySelector('#createModal input[name="action"]').value = "update";
+    document.querySelector('#createModal h3').innerHTML = '<i class="fas fa-user-edit mr-2"></i> Edit Guru/Staf';
+    
+    if (!document.getElementById('editUserId')) {
+        let input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'user_id';
+        input.id = 'editUserId';
+        document.querySelector('#createModal form').appendChild(input);
+    }
+    document.getElementById('editUserId').value = t.id;
+    
+    document.querySelector('#createModal input[name="full_name"]').value = t.full_name;
+    document.querySelector('#createModal input[name="tgl_lahir"]').value = t.tgl_lahir || '';
+    document.querySelector('#createModal input[name="no_hp"]').value = t.no_hp || '';
+    document.querySelector('#createModal textarea[name="bio"]').value = t.bio || '';
+    document.querySelector('#createModal select[name="role"]').value = t.role;
+    document.querySelector('#createModal input[name="subject"]').value = t.subject || '';
+    document.querySelector('#createModal input[name="username"]').value = t.username;
+    document.querySelector('#createModal input[name="email"]').value = t.email || '';
+    document.querySelector('#createModal input[name="password"]').required = false;
+    document.querySelector('#createModal input[name="password"]').placeholder = 'Kosongkan jika tidak diubah';
+    
+    if (!document.getElementById('statusContainer')) {
+        let statusHtml = `
+        <div class="mt-4" id="statusContainer">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Status Akun</label>
+            <select name="status" id="statusSelect" class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg">
+                <option value="1">Aktif</option>
+                <option value="0">Nonaktif</option>
+            </select>
+        </div>`;
+        document.querySelector('#createModal select[name="role"]').parentElement.insertAdjacentHTML('afterend', statusHtml);
+    } else {
+        document.getElementById('statusContainer').style.display = 'block';
+    }
+    document.getElementById('statusSelect').value = t.is_active;
+
     document.getElementById('createModal').classList.remove('hidden');
 }
 
