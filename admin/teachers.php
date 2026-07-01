@@ -143,6 +143,10 @@ $stmt = $db->prepare($query);
 $stmt->execute($params);
 $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Fetch existing classes from siswa for the dropdown
+$kelas_stmt = $db->query("SELECT DISTINCT kelas FROM siswa WHERE kelas IS NOT NULL AND kelas != '' ORDER BY kelas");
+$existing_classes = $kelas_stmt->fetchAll(PDO::FETCH_COLUMN);
+
 ?>
 <?php include 'includes/admin_header.php'; ?>
 
@@ -327,8 +331,12 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     
                     <div id="waliKelasContainer">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Wali Kelas (Opsional)</label>
-                        <input type="text" name="wali_kelas" placeholder="Contoh: 1A"
-                               class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <select name="wali_kelas" class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">-- Bukan Wali Kelas / Pilih Kelas --</option>
+                            <?php foreach($existing_classes as $kls): ?>
+                                <option value="<?= htmlspecialchars($kls) ?>"><?= htmlspecialchars($kls) ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div>
@@ -405,7 +413,21 @@ function editTeacher(t) {
     document.querySelector('#createModal textarea[name="bio"]').value = t.bio || '';
     document.querySelector('#createModal select[name="role"]').value = t.role;
     document.querySelector('#createModal input[name="subject"]').value = t.subject || '';
-    document.querySelector('#createModal input[name="wali_kelas"]').value = t.wali_kelas || '';
+    
+    // Set wali_kelas select
+    let waliKelasSelect = document.querySelector('#createModal select[name="wali_kelas"]');
+    if (t.wali_kelas) {
+        // Check if the option exists, if not, add it so the value can be set
+        let optionExists = Array.from(waliKelasSelect.options).some(opt => opt.value === t.wali_kelas);
+        if (!optionExists) {
+            let newOption = new Option(t.wali_kelas, t.wali_kelas);
+            waliKelasSelect.add(newOption);
+        }
+        waliKelasSelect.value = t.wali_kelas;
+    } else {
+        waliKelasSelect.value = '';
+    }
+
     document.querySelector('#createModal input[name="username"]').value = t.username;
     document.querySelector('#createModal input[name="email"]').value = t.email || '';
     document.querySelector('#createModal input[name="password"]').required = false;
@@ -440,7 +462,7 @@ function toggleWaliKelas() {
     if (roleSelect && waliKelasContainer) {
         if (roleSelect.value === 'staf') {
             waliKelasContainer.style.display = 'none';
-            document.querySelector('#createModal input[name="wali_kelas"]').value = '';
+            document.querySelector('#createModal select[name="wali_kelas"]').value = '';
         } else {
             waliKelasContainer.style.display = 'block';
         }
