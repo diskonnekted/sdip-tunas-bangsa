@@ -37,10 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bio = $_POST['bio'] ?? '';
             $tgl_lahir = !empty($_POST['tgl_lahir']) ? $_POST['tgl_lahir'] : null;
             $no_hp = $_POST['no_hp'] ?? '';
+            $wali_kelas = $_POST['wali_kelas'] ?? '';
             
             // Insert into teacher_profiles
-            $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp]);
+            $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp, wali_kelas) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp, $wali_kelas]);
             
             Auth::setFlashMessage('success', 'Data Guru/Staf berhasil ditambahkan.');
         } else {
@@ -76,16 +77,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bio = $_POST['bio'] ?? '';
             $tgl_lahir = !empty($_POST['tgl_lahir']) ? $_POST['tgl_lahir'] : null;
             $no_hp = $_POST['no_hp'] ?? '';
+            $wali_kelas = $_POST['wali_kelas'] ?? '';
             
             // Check if profile exists
             $check = $db->prepare("SELECT id FROM teacher_profiles WHERE user_id = ?");
             $check->execute([$userId]);
             if ($check->fetch()) {
-                $stmt = $db->prepare("UPDATE teacher_profiles SET subject=?, bio=?, tgl_lahir=?, no_hp=? WHERE user_id=?");
-                $stmt->execute([$subject, $bio, $tgl_lahir, $no_hp, $userId]);
+                $stmt = $db->prepare("UPDATE teacher_profiles SET subject=?, bio=?, tgl_lahir=?, no_hp=?, wali_kelas=? WHERE user_id=?");
+                $stmt->execute([$subject, $bio, $tgl_lahir, $no_hp, $wali_kelas, $userId]);
             } else {
-                $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp) VALUES (?, ?, ?, ?, ?)");
-                $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp]);
+                $stmt = $db->prepare("INSERT INTO teacher_profiles (user_id, subject, bio, tgl_lahir, no_hp, wali_kelas) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$userId, $subject, $bio, $tgl_lahir, $no_hp, $wali_kelas]);
             }
             
             Auth::setFlashMessage('success', 'Data Guru/Staf berhasil diperbarui.');
@@ -116,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $search = $_GET['search'] ?? '';
 $role_filter = $_GET['role'] ?? '';
 
-$query = "SELECT u.*, tp.subject, tp.tgl_lahir, tp.no_hp, tp.photo_filename 
+$query = "SELECT u.*, tp.subject, tp.tgl_lahir, tp.no_hp, tp.wali_kelas, tp.photo_filename 
           FROM admin_users u 
           LEFT JOIN teacher_profiles tp ON u.id = tp.user_id 
           WHERE u.role IN ('guru', 'staf')";
@@ -222,6 +224,11 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?= $t['role'] === 'guru' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800' ?>">
                                     <?= ucfirst($t['role']) ?>
                                 </span>
+                                <?php if (!empty($t['wali_kelas'])): ?>
+                                <span class="ml-1 px-2 inline-flex text-[10px] leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 border border-yellow-200">
+                                    Wali Kelas: <?= htmlspecialchars($t['wali_kelas']) ?>
+                                </span>
+                                <?php endif; ?>
                                 <div class="text-sm text-gray-500 mt-1"><?= htmlspecialchars($t['subject'] ?: '-') ?></div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -317,6 +324,12 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <input type="text" name="subject" placeholder="Contoh: Guru Matematika"
                                class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
+                    
+                    <div id="waliKelasContainer">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Wali Kelas (Opsional)</label>
+                        <input type="text" name="wali_kelas" placeholder="Contoh: 1A"
+                               class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Username Login</label>
@@ -392,6 +405,7 @@ function editTeacher(t) {
     document.querySelector('#createModal textarea[name="bio"]').value = t.bio || '';
     document.querySelector('#createModal select[name="role"]').value = t.role;
     document.querySelector('#createModal input[name="subject"]').value = t.subject || '';
+    document.querySelector('#createModal input[name="wali_kelas"]').value = t.wali_kelas || '';
     document.querySelector('#createModal input[name="username"]').value = t.username;
     document.querySelector('#createModal input[name="email"]').value = t.email || '';
     document.querySelector('#createModal input[name="password"]').required = false;
@@ -412,12 +426,34 @@ function editTeacher(t) {
     }
     document.getElementById('statusSelect').value = t.is_active;
 
+    toggleWaliKelas();
     document.getElementById('createModal').classList.remove('hidden');
 }
 
 function closeCreateModal() {
     document.getElementById('createModal').classList.add('hidden');
 }
+
+function toggleWaliKelas() {
+    let roleSelect = document.querySelector('#createModal select[name="role"]');
+    let waliKelasContainer = document.getElementById('waliKelasContainer');
+    if (roleSelect && waliKelasContainer) {
+        if (roleSelect.value === 'staf') {
+            waliKelasContainer.style.display = 'none';
+            document.querySelector('#createModal input[name="wali_kelas"]').value = '';
+        } else {
+            waliKelasContainer.style.display = 'block';
+        }
+    }
+}
+
+// Attach event listener to role select to hide/show wali_kelas
+document.addEventListener("DOMContentLoaded", function() {
+    let roleSelect = document.querySelector('#createModal select[name="role"]');
+    if (roleSelect) {
+        roleSelect.addEventListener('change', toggleWaliKelas);
+    }
+});
 
 function deleteTeacher(id) {
     if (confirm('Apakah Anda yakin ingin menghapus pengguna ini?')) {
