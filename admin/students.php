@@ -168,7 +168,7 @@ $students = $studentModel->getAll($search);
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex space-x-3">
                                 <a href="jurnal_siswa.php?id=<?= $student['id'] ?>" class="text-blue-500 hover:text-blue-900 transition-colors bg-blue-50 hover:bg-blue-100 p-2 rounded-lg" title="Lihat Jurnal 7KAIH">
-                                    <i class="fas fa-book-open"></i> Jurnal
+                                    <i class="fas fa-book-open"></i> Jurnal 7KAIH
                                 </a>
                                 <?php if (!Auth::isReadOnly()): ?>
                                 <button onclick="deleteStudent(<?= $student['id'] ?>)" class="text-red-500 hover:text-red-900 transition-colors bg-red-50 hover:bg-red-100 p-2 rounded-lg" title="Hapus Siswa">
