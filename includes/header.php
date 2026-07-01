@@ -68,7 +68,7 @@ if (!class_exists('Settings')) {
     <?php include 'includes/favicon.php'; ?>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -76,7 +76,8 @@ if (!class_exists('Settings')) {
                 extend: {
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
-                        'jakarta': ['Plus Jakarta Sans', 'sans-serif']
+                        'jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+                        'amiri': ['Amiri', 'serif']
                     },
                     colors: {
                         'primary': {

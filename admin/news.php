@@ -529,13 +529,14 @@ require_once 'includes/admin_header.php';
 <script>
 tinymce.init({
     selector: '#editor',
-    plugins: 'image media link code lists table wordcount',
-    toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table code',
+    plugins: 'image media link code lists table wordcount directionality',
+    toolbar: 'undo redo | fontfamily fontsize | ltr rtl | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table code',
+    font_family_formats: 'Default=system-ui, sans-serif; Arab/Quran=Amiri, Traditional Arabic, Arial, sans-serif; Arial=arial,helvetica,sans-serif; Times New Roman=times new roman,times;',
     images_upload_url: 'upload_image_ajax.php',
     automatic_uploads: true,
     file_picker_types: 'image',
     height: 600,
-    content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; }',
+    content_style: "@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap'); body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; }",
     setup: function (editor) {
         editor.on('change', function () {
             editor.save(); // ensure textarea is updated before form submit
