@@ -13,6 +13,7 @@ $page_title = "Profil - " . $school_info['name'];
 
     <!-- Page Header -->
     <section class="page-header relative overflow-hidden">
+        <i class="fas fa-building header-bg-icon"></i>
         <div class="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-purple-600/20 pointer-events-none"></div>
         <div class="container relative z-10">
             <div class="page-header-content">

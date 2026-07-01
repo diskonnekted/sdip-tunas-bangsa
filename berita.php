@@ -15,6 +15,7 @@ include 'includes/header.php';
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-green-600 via-purple-600 to-green-800 pt-32 pb-20 overflow-hidden">
+        <i class="fas fa-newspaper absolute top-1/2 -right-[5%] transform -translate-y-1/2 text-[35rem] text-white/10 pointer-events-none leading-none z-0"></i>
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="absolute inset-0">
             <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>

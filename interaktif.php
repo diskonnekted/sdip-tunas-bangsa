@@ -7,6 +7,7 @@ include 'includes/header.php';
 
 <!-- Hero Section -->
 <div class="relative bg-primary-600 pt-32 pb-20 overflow-hidden">
+    <i class="fas fa-laptop-code absolute top-1/2 -right-[5%] transform -translate-y-1/2 text-[35rem] text-white/10 pointer-events-none leading-none z-0"></i>
     <div class="absolute inset-0">
         <div class="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-800 opacity-90"></div>
         <div class="absolute inset-0 bg-[url('images/pattern.png')] opacity-10"></div>

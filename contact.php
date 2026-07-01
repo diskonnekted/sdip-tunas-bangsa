@@ -19,7 +19,9 @@ $page_title = 'Hubungi Kami';
 </script>
 
     <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="relative pt-32 pb-20 overflow-hidden">
+        <i class="fas fa-phone-alt absolute top-1/2 -right-[5%] transform -translate-y-1/2 text-[35rem] text-white/10 pointer-events-none leading-none z-0"></i>
         <!-- Background Image & Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="images/sch2.jpg" alt="Background" class="w-full h-full object-cover">

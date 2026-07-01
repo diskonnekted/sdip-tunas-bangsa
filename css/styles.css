@@ -787,6 +787,18 @@ body {
     z-index: 1;
 }
 
+.header-bg-icon {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+    font-size: 35rem;
+    color: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+    pointer-events: none;
+    line-height: 1;
+}
+
 .page-header-content {
     position: relative;
     z-index: 2;

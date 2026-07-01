@@ -37,6 +37,7 @@ function getStaffPhotoPath($user) {
 <?php include 'includes/header.php'; ?>
 
 <section class="page-header">
+    <i class="fas fa-users header-bg-icon"></i>
     <div class="container">
         <div class="page-header-content">
             <h1>Profil Staf</h1>

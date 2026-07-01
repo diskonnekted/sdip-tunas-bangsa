@@ -394,6 +394,7 @@ try {
 
     <!-- Page Header -->
     <section class="page-header">
+        <i class="fas fa-info-circle header-bg-icon"></i>
         <div class="container">
             <div class="page-header-content">
                 <h1>Informasi Umum</h1>

@@ -89,6 +89,7 @@ try {
 
     <!-- Page Header -->
     <section class="page-header">
+        <i class="fas fa-lightbulb header-bg-icon"></i>
         <div class="container">
             <div class="page-header-content">
                 <h1>Inovasi Pembelajaran</h1>

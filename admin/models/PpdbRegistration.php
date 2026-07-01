@@ -130,6 +130,19 @@ class PpdbRegistration {
         }
     }
 
+    public function getById($id) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+        
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            return false;
+        }
+    }
+
     public function updateStatus($id, $status) {
         $query = "UPDATE " . $this->table_name . " SET status = :status WHERE id = :id";
         

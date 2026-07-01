@@ -13,6 +13,7 @@ $page_title = "Sejarah - " . $school_info['name'];
 
     <!-- Page Header -->
     <section class="page-header relative overflow-hidden py-24 md:py-32">
+        <i class="fas fa-landmark header-bg-icon"></i>
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
             <img src="admin/uploads/sr1.jpg" alt="Para Pendiri" class="w-full h-full object-cover object-top filter sepia-[0.3]">

@@ -70,6 +70,7 @@ if (empty($teachers)) {
 <?php include 'includes/header.php'; ?>
 
 <section class="page-header">
+    <i class="fas fa-chalkboard-teacher header-bg-icon"></i>
     <div class="container">
         <div class="page-header-content">
             <h1>Profil Guru</h1>
