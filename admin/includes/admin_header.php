@@ -140,6 +140,12 @@ $page_title = $page_title ?? 'Dashboard';
                                 Data Guru & Staf
                             </a>
                         </li>
+                        <li>
+                            <a href="classes.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'classes.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
+                                <i class="fas fa-door-open mr-3 text-green-500"></i>
+                                Daftar Kelas
+                            </a>
+                        </li>
                         <?php endif; ?>
 
                         <?php if (Auth::canEditContent()): ?>
