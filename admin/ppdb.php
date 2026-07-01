@@ -4,8 +4,8 @@ require_once 'config/database.php';
 require_once 'models/PpdbRegistration.php';
 require_once 'includes/functions.php';
 
-// Require login
-Auth::requireLogin();
+// Require login and appropriate roles
+Auth::requireRole([Auth::ROLE_SUPERADMIN, Auth::ROLE_ADMIN, Auth::ROLE_STAF]);
 
 // Initialize database
 $database = new Database();

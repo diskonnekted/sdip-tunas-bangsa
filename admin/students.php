@@ -4,8 +4,8 @@ require_once 'config/database.php';
 require_once 'models/Student.php';
 require_once 'models/ParentModel.php';
 
-// Require admin or superadmin role
-Auth::requireRole([Auth::ROLE_ADMIN, Auth::ROLE_SUPERADMIN]);
+// Require roles
+Auth::requireRole([Auth::ROLE_SUPERADMIN, Auth::ROLE_ADMIN, Auth::ROLE_STAF, Auth::ROLE_GURU]);
 
 $database = new Database();
 $db = $database->getConnection();
@@ -17,6 +17,11 @@ $page_title = 'Data Siswa & Wali';
 
 // Handle Actions (Create/Edit/Delete)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!Auth::canManageStudents()) {
+        Auth::setFlashMessage('error', 'Anda tidak memiliki akses untuk mengubah data siswa.');
+        header('Location: students.php');
+        exit;
+    }
     
     $action = $_POST['action'] ?? '';
     

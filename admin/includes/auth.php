@@ -97,7 +97,11 @@ class Auth {
     }
 
     public static function isReadOnly() {
-        return false; // No more demo role
+        // Khusus Guru: Read Only saat berada di halaman students.php
+        if (self::getUserRole() === self::ROLE_GURU && basename($_SERVER['PHP_SELF']) === 'students.php') {
+            return true;
+        }
+        return false;
     }
 
     public static function canDeleteContent() {
@@ -112,7 +116,27 @@ class Auth {
 
     public static function canManageMessages() {
         $role = self::getUserRole();
-        return in_array($role, [self::ROLE_SUPERADMIN, self::ROLE_ADMIN, self::ROLE_GURU]);
+        return in_array($role, [self::ROLE_SUPERADMIN, self::ROLE_ADMIN, self::ROLE_STAF]);
+    }
+    
+    public static function canManagePPDB() {
+        $role = self::getUserRole();
+        return in_array($role, [self::ROLE_SUPERADMIN, self::ROLE_ADMIN, self::ROLE_STAF]);
+    }
+    
+    public static function canViewStudents() {
+        $role = self::getUserRole();
+        return in_array($role, [self::ROLE_SUPERADMIN, self::ROLE_ADMIN, self::ROLE_STAF, self::ROLE_GURU]);
+    }
+    
+    public static function canManageStudents() {
+        $role = self::getUserRole();
+        return in_array($role, [self::ROLE_SUPERADMIN, self::ROLE_ADMIN, self::ROLE_STAF]);
+    }
+    
+    public static function canViewClasses() {
+        $role = self::getUserRole();
+        return in_array($role, [self::ROLE_SUPERADMIN, self::ROLE_ADMIN, self::ROLE_GURU, self::ROLE_STAF]);
     }
 
     public static function logout() {

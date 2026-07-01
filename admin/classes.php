@@ -2,8 +2,8 @@
 require_once 'includes/auth.php';
 require_once 'config/database.php';
 
-// Require admin or superadmin role
-Auth::requireRole([Auth::ROLE_ADMIN, Auth::ROLE_SUPERADMIN]);
+// Require roles
+Auth::requireRole([Auth::ROLE_SUPERADMIN, Auth::ROLE_ADMIN, Auth::ROLE_STAF, Auth::ROLE_GURU]);
 
 $database = new Database();
 $db = $database->getConnection();

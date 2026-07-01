@@ -114,17 +114,18 @@ $page_title = $page_title ?? 'Dashboard';
                                 <span class="ml-2 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Read-only</span>
                                 <?php endif; ?>
                             </a>
-                        </li>
                         <?php endif; ?>
 
+                        <?php if (Auth::canManagePPDB()): ?>
                         <li>
                             <a href="ppdb.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'ppdb.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
                                 <i class="fas fa-user-plus mr-3 text-gray-400"></i>
                                 Data PPDB
-                            </a>
+                        </a>
                         </li>
+                        <?php endif; ?>
                         
-                        <?php if (Auth::canManageUsers()): ?>
+                        <?php if (Auth::canViewStudents()): ?>
                         <li>
                             <a href="students.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'students.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
                                 <i class="fas fa-user-graduate mr-3 text-red-500"></i>
@@ -140,6 +141,9 @@ $page_title = $page_title ?? 'Dashboard';
                                 Data Guru & Staf
                             </a>
                         </li>
+                        <?php endif; ?>
+
+                        <?php if (Auth::canViewClasses()): ?>
                         <li>
                             <a href="classes.php" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 <?= basename($_SERVER['PHP_SELF']) == 'classes.php' ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-500' : '' ?>">
                                 <i class="fas fa-door-open mr-3 text-green-500"></i>
