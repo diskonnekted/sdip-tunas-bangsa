@@ -151,7 +151,7 @@ if (!class_exists('Settings')) {
                         <a href="inovasi.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('inovasi.php', $current_page); ?> transition-all duration-300">Inovasi</a>
                         <a href="contact.php" class="nav-link px-4 py-2 rounded-full text-sm font-medium <?php echo getMenuClass('contact.php', $current_page); ?> transition-all duration-300">Kontak</a>
                         <a href="parent/login.php" class="nav-link px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-red-600 to-red-800 text-white hover:from-red-700 hover:to-red-900 transition-all duration-300 shadow-lg shadow-red-500/30">7KAIH</a>
-                        <a href="ppdb.php" class="nav-link px-4 py-2 rounded-full text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-primary-500/30">PPDB Online</a>
+                        <a href="ppdb.php" class="nav-link px-4 py-2 rounded-full text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-primary-500/30">PPDB</a>
                     </div>
 
                     <!-- Mobile Menu Button -->
@@ -186,7 +186,7 @@ if (!class_exists('Settings')) {
                     <a href="inovasi.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('inovasi.php', $current_page); ?>">Inovasi</a>
                     <a href="contact.php" class="block px-4 py-3 rounded-2xl text-sm <?php echo getMobileMenuClass('contact.php', $current_page); ?>">Kontak</a>
                     <a href="parent/login.php" class="block px-4 py-3 rounded-2xl text-sm font-bold bg-gradient-to-r from-red-600 to-red-800 text-white text-center shadow-md">Portal Wali 7KAIH</a>
-                    <a href="ppdb.php" class="block px-4 py-3 rounded-2xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 text-center shadow-md">PPDB Online</a>
+                    <a href="ppdb.php" class="block px-4 py-3 rounded-2xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 text-center shadow-md">PPDB</a>
                 </div>
             </div>
         </div>
