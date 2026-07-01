@@ -143,9 +143,13 @@ $stmt = $db->prepare($query);
 $stmt->execute($params);
 $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch existing classes from siswa for the dropdown
-$kelas_stmt = $db->query("SELECT DISTINCT kelas FROM siswa WHERE kelas IS NOT NULL AND kelas != '' ORDER BY kelas");
-$existing_classes = $kelas_stmt->fetchAll(PDO::FETCH_COLUMN);
+// Generate list of classes from 1A to 6F
+$existing_classes = [];
+foreach (range(1, 6) as $grade) {
+    foreach (range('A', 'F') as $section) {
+        $existing_classes[] = $grade . $section;
+    }
+}
 
 ?>
 <?php include 'includes/admin_header.php'; ?>
